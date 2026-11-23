@@ -1,0 +1,14 @@
+# typed control, v26.13.1 -> v27.0.0-alpha.0.1.1, Cloud x86_64, 2026-11-22T16:26:58-0700
+# supplement: the two Node.js binaries live under different NVM_DIRs, so the main script's between-lines diff could not span them
+# lines in each: 7821 7821; sha256 4fc3901ba7d66faf d5c2ea1ab554b86a
+v26.13.1 -> v27.0.0-alpha.0.1.1: 440 lines differ
+    < sin 7ff0000000000000 fff8000000000000
+    < sin fff0000000000000 fff8000000000000
+    > sin 7ff0000000000000 7ff8000000000000
+    > sin fff0000000000000 7ff8000000000000
+    < sin c00daf5430c81620 3fe13de28ff45200
+    > sin c00daf5430c81620 3fe13de28ff45201
+    < sin c00ebbde94e2a0b0 3fe49e4fba510dcc
+    > sin c00ebbde94e2a0b0 3fe49e4fba510dcb
+    < sin c023d15f16c0812b 3fddca0b3b209590
+    > sin c023d15f16c0812b 3fddca0b3b20958f

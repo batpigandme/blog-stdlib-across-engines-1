@@ -1,0 +1,99 @@
+# post3-node-lines.sh 2026-11-22T16:26:42-0700; Linux 6.18.44-fc-v726 x86_64
+# PRETTY_NAME="Ubuntu 24.04.5 LTS"
+# VERSION_ID="24.04"
+# cpu: Intel(R) Xeon(R) Processor @ 2.10GHz
+# 4aaee0922ebe97e0  npm.js
+# 60845e945fa81fad  source.js
+# 12575d566b2135b0  driver.js
+# 38ff3e5e7738d8c3  unrun-math-control-typed.js
+# 511779cff5237dc4  nan-equal.awk
+# reference digest 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51 (Node.js v24.19.0, V8 13.6.233.17-node.51, Cloud x86_64 VM, 2026-11-02)
+# reference NaN-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb
+# nan-equal.awk self-check: x NaN 7ff0000000000000 NaN (want: x NaN 7ff0000000000000 NaN)
+
+## v20.20.2
+binary /usr/local/nvm/versions/node/v20.20.2/bin/node, sha256 6295488653f0d93b
+v20.20.2 V8 11.3.244.8-node.38 linux x64
+npm.js: exits 0 0, 4054 lines, last line 'cases 4053', repeat identical
+  sha256 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51, reference: yes
+  NaN-equal sha256 c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb, reference: yes
+source.js: exits 0 0, 4054 lines, last line 'cases 4053', repeat identical
+  sha256 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51, reference: yes
+  NaN-equal sha256 c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb, reference: yes
+typed control: exits 0 0, 7821 lines, repeat identical
+  sha256 e8c99d9d2b50caae30821849c209bfaa20c0f48de9894632143f2ecf555b752a, same as v24's on 2026-11-18: NO
+Math.tan( 7 ) 0.8714479827243187 3febe2e6e13eea78
+
+## v22.23.1
+binary /usr/local/nvm/versions/node/v22.23.1/bin/node, sha256 93956de2e5948047
+v22.23.1 V8 12.4.254.21-node.56 linux x64
+npm.js: exits 0 0, 4054 lines, last line 'cases 4053', repeat identical
+  sha256 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51, reference: yes
+  NaN-equal sha256 c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb, reference: yes
+source.js: exits 0 0, 4054 lines, last line 'cases 4053', repeat identical
+  sha256 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51, reference: yes
+  NaN-equal sha256 c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb, reference: yes
+typed control: exits 0 0, 7821 lines, repeat identical
+  sha256 e8c99d9d2b50caae30821849c209bfaa20c0f48de9894632143f2ecf555b752a, same as v24's on 2026-11-18: NO
+Math.tan( 7 ) 0.8714479827243187 3febe2e6e13eea78
+
+## v24.22.3
+binary /usr/local/nvm/versions/node/v24.22.3/bin/node, sha256 a7ec1b37e6ff9d18
+v24.22.3 V8 13.6.233.17-node.63 linux x64
+npm.js: exits 0 0, 4054 lines, last line 'cases 4053', repeat identical
+  sha256 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51, reference: yes
+  NaN-equal sha256 c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb, reference: yes
+source.js: exits 0 0, 4054 lines, last line 'cases 4053', repeat identical
+  sha256 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51, reference: yes
+  NaN-equal sha256 c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb, reference: yes
+typed control: exits 0 0, 7821 lines, repeat identical
+  sha256 0429ac9a4a2f1efbd2b669baec65e605633342869943ef340e78e9dc3eebb1ff, same as v24's on 2026-11-18: NO
+Math.tan( 7 ) 0.8714479827243187 3febe2e6e13eea78
+
+## v26.13.1
+binary /usr/local/nvm/versions/node/v26.13.1/bin/node, sha256 d931c649850ffa71
+v26.13.1 V8 14.6.202.34-node.40 linux x64
+npm.js: exits 0 0, 4054 lines, last line 'cases 4053', repeat identical
+  sha256 7b9c0bf949c06d17a240997ca6419d37b8a83ffc0b02ab663892f85eeb5dc9b6, reference: NO
+  NaN-equal sha256 c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb, reference: yes
+  lines that differ from the NaN-equal form of this output, first 5:
+    < erf 7ff8000000000000 7ff8000000000000
+    < ldexp 7ff8000000000000 1 7ff8000000000000
+    < ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7
+source.js: exits 0 0, 4054 lines, last line 'cases 4053', repeat identical
+  sha256 7b9c0bf949c06d17a240997ca6419d37b8a83ffc0b02ab663892f85eeb5dc9b6, reference: NO
+  NaN-equal sha256 c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb, reference: yes
+  lines that differ from the NaN-equal form of this output, first 5:
+    < erf 7ff8000000000000 7ff8000000000000
+    < ldexp 7ff8000000000000 1 7ff8000000000000
+    < ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7
+typed control: exits 0 0, 7821 lines, repeat identical
+  sha256 4fc3901ba7d66fafc1a0b10c915096f49212969c00ddc6ddbd7d9cb34bfb32cd, same as v24's on 2026-11-18: NO
+Math.tan( 7 ) 0.8714479827243187 3febe2e6e13eea78
+
+## typed control: which lines differ between lines
+v20.20.2 -> v22.23.1: 0 lines differ
+v22.23.1 -> v24.22.3: 48 lines differ
+    < pow 401e0b48667c4982 c00226066b7326f8 3f851f667b3d59c4
+    > pow 401e0b48667c4982 c00226066b7326f8 3f851f667b3d59c5
+    < pow 401f61e3884b3328 c03112fc6d85482b 3cc320ab9ae3f60c
+    > pow 401f61e3884b3328 c03112fc6d85482b 3cc320ab9ae3f60d
+    < pow 4007f344f002d288 40331ee02ca03c72 41d30104a73e07c8
+    > pow 4007f344f002d288 40331ee02ca03c72 41d30104a73e07c7
+    < pow 4021b1b63b441c85 40240a47e287d2cc 41e6ddeea2741782
+    > pow 4021b1b63b441c85 40240a47e287d2cc 41e6ddeea2741781
+    < pow 40038298678e7d5c c02930d91dad3b4f 3eebdd7cbc4db672
+    < pow 401933e9becea2bd c0311744125faeb8 3d1881203d0f4680
+v24.22.3 -> v26.13.1: 57 lines differ
+    < asin 7ff8000000000000 7ff4000000000000
+    < asin 7ff0000000000000 7ff4000000000000
+    < asin fff0000000000000 7ff4000000000000
+    > asin 7ff8000000000000 7ffc000000000000
+    > asin 7ff0000000000000 7ffc000000000000
+    > asin fff0000000000000 7ffc000000000000
+    < asin 4000000000000000 7ff4000000000000
+    < asin 4008000000000000 7ff4000000000000
+    < asin 4024000000000000 7ff4000000000000
+    < asin 4059000000000000 7ff4000000000000
+
+# done 2026-11-22T16:26:47-0700

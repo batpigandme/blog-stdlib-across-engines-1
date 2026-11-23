@@ -1,0 +1,33 @@
+N/A: version "default -> v27.0.0-alpha.0.1.1" is installed, but excluded by the selected version categories (lts,non-lts,iojs).
+
+Include its category with `--only=<categories>`, or in `$NVM_ONLY`.
+# nvm used for this install: 0.41.0 at /tmp/nvm041 (official v0.41.0 install.sh; 'nvm install --only=alpha 27'); the four stable lines were installed with nvm 0.40.1 at /usr/local/nvm
+# post3-node-lines.sh 2026-11-22T16:26:47-0700; Linux 6.18.44-fc-v726 x86_64
+# PRETTY_NAME="Ubuntu 24.04.5 LTS"
+# VERSION_ID="24.04"
+# cpu: Intel(R) Xeon(R) Processor @ 2.10GHz
+# 4aaee0922ebe97e0  npm.js
+# 60845e945fa81fad  source.js
+# 12575d566b2135b0  driver.js
+# 38ff3e5e7738d8c3  unrun-math-control-typed.js
+# 511779cff5237dc4  nan-equal.awk
+# reference digest 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51 (Node.js v24.19.0, V8 13.6.233.17-node.51, Cloud x86_64 VM, 2026-11-02)
+# reference NaN-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb
+# nan-equal.awk self-check: x NaN 7ff0000000000000 NaN (want: x NaN 7ff0000000000000 NaN)
+
+## v27.0.0-alpha.0.1.1
+binary /tmp/nvm041/versions/node/v27.0.0-alpha.0.1.1/bin/node, sha256 b9ef40ad8f668c1d
+v27.0.0-alpha.0.1.1 V8 15.6.75.50-node.14 linux x64
+npm.js: exits 0 0, 4054 lines, last line 'cases 4053', repeat identical
+  sha256 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51, reference: yes
+  NaN-equal sha256 c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb, reference: yes
+source.js: exits 0 0, 4054 lines, last line 'cases 4053', repeat identical
+  sha256 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51, reference: yes
+  NaN-equal sha256 c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb, reference: yes
+typed control: exits 0 0, 7821 lines, repeat identical
+  sha256 d5c2ea1ab554b86afe4ef57bbd6a276af0c52e2b3cf81e9382f16706168db533, same as v24's on 2026-11-18: NO
+Math.tan( 7 ) 0.8714479827243188 3febe2e6e13eea79
+
+## typed control: which lines differ between lines
+
+# done 2026-11-22T16:26:48-0700
