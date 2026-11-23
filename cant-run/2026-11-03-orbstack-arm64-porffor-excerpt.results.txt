@@ -1,0 +1,48 @@
+[excerpt: the header and one section of a longer run; the rest covers other engines]
+# ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852 on linux/arm64
+# plainly-wrong-recheck-probes.sh 2026-11-03T14:39:16+0000; Linux 7.2.12-orbstack-00394-gbecdd6130068 aarch64; arch arm64; run run2
+# translator: none mapped; glibc 2.39-0ubuntu8.9; gcc (conda-forge gcc 13.3.0-2) 13.3.0; go go1.24.7 linux/arm64; node v24.19.0
+
+## Porffor's UINT32_MAX: a two-line program, compiled with porf native
+porf sha256 4b36c2ea1df5b789, cc is plainly-wrong-recheck-env/.pixi/envs/default/bin/cc
+   var UINT32_MAX = 4294967295;
+   console.log(UINT32_MAX);
+-- porffor-uint32, run 1 [exit 1]
+<stdin>:2993:14: error: expected identifier or '(' before numeric constant
+<stdin>:3031:29: error: request for member 'val' in something not a structure or union
+<stdin>:3031:45: error: request for member 'type' in something not a structure or union
+<stdin>:7799:13: error: lvalue required as left operand of assignment
+<stdin>:7800:35: error: incompatible type for argument 1 of 'p_builtins___Porffor_print'
+[compile exit 1]
+   (run 2 [exit 1] identical)
+diagnostic: renamed UINT32_MAXX
+-- porffor-renamed, run 1 [exit 0]
+[compile exit 0]
+<ESC>[33m4294967295<ESC>[0m
+   (run 2 [exit 0] identical)
+the macro, on this architecture's headers: cc -E of <stdint.h> and UINT32_MAX gives (4294967295U); sysroot/usr/include/stdint.h: 118:# define UINT32_MAX		(4294967295U)
+porf c: exit 0
+porffor-u.c, generated on arm64 by porf c, sha256 746e9456c1df68b7, compiled here by this architecture's cc:
+-- porffor-cc-u, run 1 [exit 0]
+bin/recheck/arm64/out/run2/porffor-u.c:2993:14: error: expected identifier or '(' before numeric constant
+bin/recheck/arm64/out/run2/porffor-u.c:3031:29: error: request for member 'val' in something not a structure or union
+bin/recheck/arm64/out/run2/porffor-u.c:3031:45: error: request for member 'type' in something not a structure or union
+bin/recheck/arm64/out/run2/porffor-u.c:7799:20: error: lvalue required as left operand of assignment
+bin/recheck/arm64/out/run2/porffor-u.c:7800:42: error: incompatible type for argument 1 of 'p_builtins___Porffor_print'
+[cc exit 1]
+   (run 2 [exit 0] identical)
+porffor-ux.c, generated on arm64 by porf c, sha256 48d757c02fd5fcb5, compiled here by this architecture's cc:
+-- porffor-cc-ux, run 1 [exit 0]
+[cc exit 0]
+   (run 2 [exit 0] identical)
+stdlib's bundle, as in the cloud: bundles/npm.js
+-- porffor-bundle, run 1 [exit 0]
+<stdin>:36867:7: error: expected identifier or '(' before numeric constant
+<stdin>:36870:13: error: lvalue required as left operand of assignment
+<stdin>:36916:9: error: expected identifier or '(' before numeric constant
+<stdin>:73:38: error: expected statement before ')' token
+<stdin>:36943:13: error: lvalue required as left operand of assignment
+<stdin>:36944:66: error: request for member 'val' in something not a structure or union
+[compile exit 1]
+   (run 2 [exit 0] identical)
+
