@@ -17,7 +17,7 @@ A page that runs stdlib's `erf` and `ldexp` on 4,053 inputs in the browser that 
 
 ## Three browsers, 23 November 2026
 
-Results only: recorded by opening the page in each browser, on macOS 26.7.3 (25G342), on an Apple M1 Pro. The page was served from this repository with `python3 -m http.server`, at `http://localhost:8080/page/`. Each browser's version is from the browser itself, not from its user agent.
+Results only: recorded by opening the page in each browser, on macOS 26.7.3 (25G342), on an Apple M1 Pro. The page was served from this repository with `python3 -m http.server`, at `http://localhost:8080/page/`. Each browser's version is from the browser itself, not from its user agent. All three ran natively on arm64. Firefox's About box calls that `aarch64`, another name for the same architecture, and Activity Monitor shows it as Apple silicon.
 
 | Browser | Version | Engine | Bit for bit | NaN-equal |
 | --- | --- | --- | --- | --- |
