@@ -100,6 +100,7 @@ button {
 <tr><th scope="row">Bit for bit</th><td><code id="bits"></code><br><span id="bits-verdict"></span></td></tr>
 <tr><th scope="row">NaN-equal</th><td><code id="nan-equal"></code><br><span id="nan-equal-verdict"></span></td></tr>
 <tr><th scope="row">Lines</th><td><span id="lines"></span></td></tr>
+<tr><th scope="row"><code>tan( 7 )</code>, stdlib and this browser</th><td><code id="tan7">Running…</code><br><span>stdlib's, then this browser's own <code>Math.tan</code>, each as bits and decimal.</span></td></tr>
 <tr><th scope="row">User agent</th><td><code id="ua"></code><br><span>What the browser reports about itself, not a version check.</span></td></tr>
 </tbody>
 </table>
@@ -145,7 +146,25 @@ button {
 		document.getElementById( 'lines' ).textContent = r.lines + '; the last is “' + r.last + '”';
 		document.getElementById( 'ua' ).textContent = ua;
 		document.getElementById( 'results' ).hidden = false;
-		var record = window.stdlibDigest.report( r, 'user agent', ua, new Date().toISOString() ) + '\npage          ' + location.href;
+		var tan7 = document.getElementById( 'tan7' );
+		var tan7Record;
+		try {
+			var tanRes = await fetch( '../bundles/tan7.js', { 'cache': 'no-store' } );
+			if ( !tanRes.ok ) {
+				throw new Error( 'Could not load ../bundles/tan7.js: HTTP ' + tanRes.status + '.' );
+			}
+			var tanLines = window.stdlibDigest.run( await tanRes.text() );
+			if ( tanLines.length !== 1 ) {
+				throw new Error( 'Expected one line from ../bundles/tan7.js, got ' + tanLines.length + '.' );
+			}
+			tan7.textContent = tanLines[ 0 ];
+			tan7Record = tanLines[ 0 ];
+		} catch ( err ) {
+			tan7.textContent = 'Stopped: ' + err.message;
+			tan7.className = 'bad';
+			tan7Record = 'not run: ' + err.message;
+		}
+		var record = window.stdlibDigest.report( r, 'user agent', ua, new Date().toISOString() ) + '\ntan7 bundle   ' + tan7Record + '\npage          ' + location.href;
 		document.getElementById( 'record' ).textContent = record;
 		status.textContent = 'Done.';
 		var copy = document.getElementById( 'copy' );

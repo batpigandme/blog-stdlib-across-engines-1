@@ -13,7 +13,8 @@ A page that runs stdlib's `erf` and `ldexp` on 4,053 inputs in the browser that 
   Each digest gets a verdict. The NaN-equal one matches or differs. The bit-for-bit one matches, differs, or **differs only in how a NaN is encoded**, which the page says whenever the bit-for-bit digest differs and the NaN-equal one matches. That follows from the digests alone: if the NaN-equal digest matches, every line is the same once NaNs are rewritten, so the only lines that can differ in their bits are NaNs. Both references are from [Node.js 24.19.0](https://github.com/nodejs/node/releases/tag/v24.19.0) on a Claude Code Cloud x86_64 VM, 2 November 2026.
 - **The line count and the last line,** which should be 4,054 and `cases 4053`.
 - **`navigator.userAgent`:** what the browser reports about itself. It's a record, not a version check; a browser's version is read from the browser itself.
-- **A plain-text record** of all of it, with the date, the SHA-256 of the bundle file as fetched, and the page's own URL.
+- **`tan( 7 )`, stdlib and this browser:** one line from [`../bundles/tan7.js`](../bundles/), run the same way as `npm.js`: stdlib's `tan( 7 )` and the browser's own `Math.tan( 7 )`, each as the bits of a double and as a decimal. It isn't part of either digest, and neither verdict depends on it. If `tan7.js` can't be fetched or run, the row shows the error and the digest rows still work.
+- **A plain-text record** of all of it, with the date, the SHA-256 of the bundle file as fetched, the `tan( 7 )` line as `tan7 bundle`, and the page's own URL.
 
 ## Three browsers, 23 November 2026
 
@@ -27,7 +28,7 @@ Results only: recorded by opening the page in each browser, on macOS 26.7.3 (25G
 
 `d89e89a8…` is the reference with one line changed: the driver's signalling NaN, `ldexp fff797b7ad2f57d7 424`, stored as `7ff8000000000000`. The same digest came from SpiderMonkey's and JavaScriptCore's own shells on 21 October 2026, in [`../digest/`](../digest/). So all three browsers give stdlib's results, and Chrome keeps the signalling NaN's bits too.
 
-Each browser's record, as the page printed it:
+These three records were taken before the `tan( 7 )` row existed, so none of them has its line. Each browser's record, as the page printed it:
 
 ```text
 date          2026-11-23T14:23:18.213Z
@@ -73,7 +74,7 @@ The driver prints with `print` when the host has one. In a browser the global `p
 | --- | --- |
 | [`index.html`](./index.html) | The page. |
 | [`digest.js`](./digest.js) | Runs a bundle and computes both digests and the record. The page and the Node.js check both use it. |
-| [`check-node.js`](./check-node.js) | Runs `digest.js` over `../bundles/npm.js` under Node.js, so a mismatch in a browser can't be the page's own code. |
+| [`check-node.js`](./check-node.js) | Runs `digest.js` over `../bundles/npm.js` under Node.js, so a mismatch in a browser can't be the page's own code. It also runs `../bundles/tan7.js` through `digest.js`'s `run()` and checks that the line is well formed, that each decimal parses back to the bits beside it, and that stdlib's bits are `3febe2e6e13eea78`. The `Math.tan` half is printed, not checked, since it is the host's own. |
 
 ## Running it yourself
 
