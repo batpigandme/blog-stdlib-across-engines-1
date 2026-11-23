@@ -68,6 +68,10 @@ td code {
 	color: var(--bad);
 	font-weight: 600;
 }
+.note {
+	color: var(--ink);
+	font-weight: 600;
+}
 pre {
 	background: var(--panel);
 	border: 1px solid var(--rule);
@@ -114,9 +118,14 @@ button {
 ( async function main() {
 	'use strict';
 	var status = document.getElementById( 'status' );
-	function verdict( el, ok ) {
-		el.textContent = ( ok ) ? 'Matches the reference.' : 'Differs from the reference.';
-		el.className = ( ok ) ? 'ok' : 'bad';
+	var SAY = {
+		'match': [ 'Matches the reference.', 'ok' ],
+		'nan-only': [ 'Differs only in how a NaN is encoded: every other line matches, since the NaN-equal digest does.', 'note' ],
+		'differs': [ 'Differs from the reference.', 'bad' ]
+	};
+	function verdict( el, v ) {
+		el.textContent = SAY[ v ][ 0 ];
+		el.className = SAY[ v ][ 1 ];
 	}
 	try {
 		if ( !window.crypto || !window.crypto.subtle ) {
@@ -130,9 +139,9 @@ button {
 		var r = await window.stdlibDigest.digest( bytes, window.crypto.subtle );
 		var ua = navigator.userAgent;
 		document.getElementById( 'bits' ).textContent = r.bits;
-		verdict( document.getElementById( 'bits-verdict' ), r.bitsMatch );
+		verdict( document.getElementById( 'bits-verdict' ), r.bitsVerdict );
 		document.getElementById( 'nan-equal' ).textContent = r.nanEqual;
-		verdict( document.getElementById( 'nan-equal-verdict' ), r.nanEqualMatch );
+		verdict( document.getElementById( 'nan-equal-verdict' ), r.nanEqualVerdict );
 		document.getElementById( 'lines' ).textContent = r.lines + '; the last is “' + r.last + '”';
 		document.getElementById( 'ua' ).textContent = ua;
 		document.getElementById( 'results' ).hidden = false;

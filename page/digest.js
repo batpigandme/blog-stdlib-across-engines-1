@@ -25,6 +25,16 @@
 	// fraction that isn't zero. The same rule as ../bundles/nan-equal.awk.
 	var RE_FLOAT64 = /^[7f]ff[0-9a-f]{13}$/;
 
+	// What each verdict says in the record. "nan-only" follows from the two
+	// digests alone: if the NaN-equal digest matches, every line is the same
+	// once NaNs are rewritten, so a bit-for-bit difference can only be in how
+	// a NaN is encoded.
+	var VERDICTS = {
+		'match': 'matches the reference',
+		'nan-only': 'differs only in how a NaN is encoded',
+		'differs': 'DIFFERS from the reference'
+	};
+
 	/**
 	* Runs a bundle's text and returns the lines it prints.
 	*
@@ -101,14 +111,24 @@
 			return nanEqual( l ) + '\n';
 		}).join( '' );
 		return Promise.all( [ sha256( subtle, bytes ), sha256( subtle, text ), sha256( subtle, eq ) ] ).then( function done( h ) {
+			var bitsMatch = ( h[ 1 ] === REFERENCE.bits );
+			var nanEqualMatch = ( h[ 2 ] === REFERENCE.nanEqual );
+			var bitsVerdict = 'differs';
+			if ( bitsMatch ) {
+				bitsVerdict = 'match';
+			} else if ( nanEqualMatch ) {
+				bitsVerdict = 'nan-only';
+			}
 			return {
 				'bundle': h[ 0 ],
 				'lines': lines.length,
 				'last': lines[ lines.length - 1 ],
 				'bits': h[ 1 ],
 				'nanEqual': h[ 2 ],
-				'bitsMatch': h[ 1 ] === REFERENCE.bits,
-				'nanEqualMatch': h[ 2 ] === REFERENCE.nanEqual
+				'bitsMatch': bitsMatch,
+				'nanEqualMatch': nanEqualMatch,
+				'bitsVerdict': bitsVerdict,
+				'nanEqualVerdict': ( nanEqualMatch ) ? 'match' : 'differs'
 			};
 		});
 	}
@@ -123,15 +143,12 @@
 	* @returns {string} record
 	*/
 	function report( r, hostLabel, host, date ) {
-		function verdict( ok ) {
-			return ( ok ) ? 'matches the reference' : 'DIFFERS from the reference';
-		}
 		return [
 			'date          ' + date,
 			'bundle        bundles/npm.js, sha256 ' + r.bundle,
 			'lines         ' + r.lines + ', last: ' + r.last,
-			'bit for bit   ' + r.bits + '  ' + verdict( r.bitsMatch ),
-			'NaN-equal     ' + r.nanEqual + '  ' + verdict( r.nanEqualMatch ),
+			'bit for bit   ' + r.bits + '  ' + VERDICTS[ r.bitsVerdict ],
+			'NaN-equal     ' + r.nanEqual + '  ' + VERDICTS[ r.nanEqualVerdict ],
 			pad( hostLabel ) + host
 		].join( '\n' );
 	}
@@ -145,6 +162,7 @@
 
 	return {
 		'REFERENCE': REFERENCE,
+		'VERDICTS': VERDICTS,
 		'run': run,
 		'nanEqual': nanEqual,
 		'digest': digest,

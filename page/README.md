@@ -8,7 +8,9 @@ A page that runs stdlib's `erf` and `ldexp` on 4,053 inputs in the browser that 
   - **bit for bit,** against `0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51`;
   - **NaN-equal,** with every NaN bit pattern rewritten to the word `NaN` first, by the same rule as [`../bundles/nan-equal.awk`](../bundles/nan-equal.awk), against `c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb`.
 
-  The inputs include a signalling NaN, and engines encode that NaN their own way, so the NaN-equal digest is the one expected to match everywhere. Both references are from [Node.js 24.19.0](https://github.com/nodejs/node/releases/tag/v24.19.0) on a Claude Code Cloud x86_64 VM, 2 November 2026.
+  The inputs include a signalling NaN, and engines encode that NaN their own way, so the NaN-equal digest is the one expected to match everywhere.
+
+  Each digest gets a verdict. The NaN-equal one matches or differs. The bit-for-bit one matches, differs, or **differs only in how a NaN is encoded**, which the page says whenever the bit-for-bit digest differs and the NaN-equal one matches. That follows from the digests alone: if the NaN-equal digest matches, every line is the same once NaNs are rewritten, so the only lines that can differ in their bits are NaNs. Both references are from [Node.js 24.19.0](https://github.com/nodejs/node/releases/tag/v24.19.0) on a Claude Code Cloud x86_64 VM, 2 November 2026.
 - **The line count and the last line,** which should be 4,054 and `cases 4053`.
 - **`navigator.userAgent`:** what the browser reports about itself. It's a record, not a version check; a browser's version is read from the browser itself.
 - **A plain-text record** of all of it, with the date, the SHA-256 of the bundle file as fetched, and the page's own URL.
