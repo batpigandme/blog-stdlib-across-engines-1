@@ -1,0 +1,34 @@
+# ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852 on linux/arm64
+# post3-reruns-linux.sh rhino 2026-11-22T17:29:08+0000; Linux 7.2.12-orbstack-00394-gbecdd6130068 aarch64; arch arm64; run run1
+# PRETTY_NAME="Ubuntu 24.04.5 LTS"
+# VERSION_ID="24.04"
+java: openjdk version "25.0.2-internal" 2026-01-20
+java: OpenJDK Runtime Environment (build 25.0.2-internal-adhoc.rattler.src)
+java: OpenJDK 64-Bit Server VM (build 25.0.2-internal-adhoc.rattler.src, mixed mode)
+jar sha256 9b4fc23fdd7902beabd542099b6f590f05638dbbb054e9784f444982a6296493
+nan-equal.awk self-check: x NaN 7ff0000000000000 NaN (want: x NaN 7ff0000000000000 NaN)
+reference 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51; NaN-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb; rhino-tty on 7386aa0 in the Cloud run d89e89a8c686d154
+
+== npm.js
+npm.js sha256 4aaee0922ebe97e0
+-- pipe-npm [exits 0 0], repeat identical
+-- tty-npm [exits 0 0], repeat identical
+pipe-npm: 4054 lines, last line 'cases 4053'
+   sha256 d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544, reference: no
+   NaN-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb, reference: yes
+tty-npm: 4054 lines, last line 'cases 4053'
+   sha256 d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544, reference: no
+   NaN-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb, reference: yes
+
+== source.js
+source.js sha256 60845e945fa81fad
+-- pipe-source [exits 0 0], repeat identical
+-- tty-source [exits 0 0], repeat identical
+pipe-source: 4054 lines, last line 'cases 4053'
+   sha256 d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544, reference: no
+   NaN-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb, reference: yes
+tty-source: 4054 lines, last line 'cases 4053'
+   sha256 d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544, reference: no
+   NaN-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb, reference: yes
+
+# done 2026-11-22T17:29:14+0000
