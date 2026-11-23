@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>stdlib's digest in this browser</title>
+<style>
+:root {
+	--bg: #ffffff;
+	--ink: #1a1a1a;
+	--muted: #4a4a4a;
+	--rule: #d0d0d0;
+	--panel: #f4f4f4;
+	--ok: #0b5d1e;
+	--bad: #8a1010;
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg: #121212;
+		--ink: #ececec;
+		--muted: #bdbdbd;
+		--rule: #3a3a3a;
+		--panel: #1e1e1e;
+		--ok: #7ddc93;
+		--bad: #ff9a9a;
+	}
+}
+body {
+	background: var(--bg);
+	color: var(--ink);
+	font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+	margin: 0 auto;
+	max-width: 46rem;
+	padding: 1.5rem 1rem 3rem;
+}
+h1 {
+	font-size: 1.5rem;
+	line-height: 1.25;
+}
+code, pre {
+	font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+	font-size: 0.875rem;
+}
+p {
+	color: var(--muted);
+}
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+th, td {
+	border-bottom: 1px solid var(--rule);
+	padding: 0.5rem 0.5rem 0.5rem 0;
+	text-align: left;
+	vertical-align: top;
+}
+th {
+	white-space: nowrap;
+}
+td code {
+	overflow-wrap: anywhere;
+}
+.ok {
+	color: var(--ok);
+	font-weight: 600;
+}
+.bad {
+	color: var(--bad);
+	font-weight: 600;
+}
+pre {
+	background: var(--panel);
+	border: 1px solid var(--rule);
+	overflow-x: auto;
+	padding: 0.75rem;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+button {
+	font: inherit;
+	padding: 0.35rem 0.9rem;
+}
+</style>
+</head>
+<body>
+<main>
+<h1>stdlib's digest in this browser</h1>
+<p>This page runs stdlib's <code>erf</code> and <code>ldexp</code> on 4,053 inputs, in this browser's JavaScript engine, and prints each result as the bits of a double. It then hashes those lines, so equal digests mean equal bits on every line, and compares them with a reference taken on Node.js. Nothing is sent anywhere.</p>
+<p>The bit-for-bit digest may differ for one reason the page can't rule out: the inputs include a signalling NaN, and engines encode that NaN their own way. The NaN-equal digest, which counts every NaN as NaN whatever its bits, is the one expected to match.</p>
+
+<p id="status" role="status">Running…</p>
+
+<table id="results" hidden>
+<caption>Results in this browser</caption>
+<tbody>
+<tr><th scope="row">Bit for bit</th><td><code id="bits"></code><br><span id="bits-verdict"></span></td></tr>
+<tr><th scope="row">NaN-equal</th><td><code id="nan-equal"></code><br><span id="nan-equal-verdict"></span></td></tr>
+<tr><th scope="row">Lines</th><td><span id="lines"></span></td></tr>
+<tr><th scope="row">User agent</th><td><code id="ua"></code><br><span>What the browser reports about itself, not a version check.</span></td></tr>
+</tbody>
+</table>
+
+<h2>The record</h2>
+<p>The same results as plain text, with the date and the bundle's own hash.</p>
+<pre id="record" aria-live="polite"></pre>
+<p><button id="copy" type="button" disabled>Copy the record</button> <span id="copied" role="status"></span></p>
+
+<h2>The reference</h2>
+<p>Bit for bit <code>0bf2fbde…b51</code>, and NaN-equal <code>c17d8dbb…0bb</code>, from Node.js 24.19.0 on a Claude Code Cloud x86_64 VM, 2 November 2026. The bundle and both digests in full are in this repository's <a href="../bundles/">bundles</a> folder.</p>
+<noscript><p>This page needs JavaScript: running stdlib in your browser is the whole test.</p></noscript>
+</main>
+<script src="./digest.js"></script>
+<script>
+( async function main() {
+	'use strict';
+	var status = document.getElementById( 'status' );
+	function verdict( el, ok ) {
+		el.textContent = ( ok ) ? 'Matches the reference.' : 'Differs from the reference.';
+		el.className = ( ok ) ? 'ok' : 'bad';
+	}
+	try {
+		if ( !window.crypto || !window.crypto.subtle ) {
+			throw new Error( 'This browser has no crypto.subtle here. Open the page over https, or from localhost, not as a file.' );
+		}
+		var res = await fetch( '../bundles/npm.js', { 'cache': 'no-store' } );
+		if ( !res.ok ) {
+			throw new Error( 'Could not load ../bundles/npm.js: HTTP ' + res.status + '.' );
+		}
+		var bytes = await res.arrayBuffer();
+		var r = await window.stdlibDigest.digest( bytes, window.crypto.subtle );
+		var ua = navigator.userAgent;
+		document.getElementById( 'bits' ).textContent = r.bits;
+		verdict( document.getElementById( 'bits-verdict' ), r.bitsMatch );
+		document.getElementById( 'nan-equal' ).textContent = r.nanEqual;
+		verdict( document.getElementById( 'nan-equal-verdict' ), r.nanEqualMatch );
+		document.getElementById( 'lines' ).textContent = r.lines + '; the last is “' + r.last + '”';
+		document.getElementById( 'ua' ).textContent = ua;
+		document.getElementById( 'results' ).hidden = false;
+		var record = window.stdlibDigest.report( r, 'user agent', ua, new Date().toISOString() ) + '\npage          ' + location.href;
+		document.getElementById( 'record' ).textContent = record;
+		status.textContent = 'Done.';
+		var copy = document.getElementById( 'copy' );
+		copy.disabled = false;
+		copy.addEventListener( 'click', async function onCopy() {
+			try {
+				await navigator.clipboard.writeText( record );
+				document.getElementById( 'copied' ).textContent = 'Copied.';
+			} catch ( err ) {
+				document.getElementById( 'copied' ).textContent = 'Copying failed here; select the record and copy it by hand.';
+			}
+		});
+	} catch ( err ) {
+		status.textContent = 'Stopped: ' + err.message;
+		status.className = 'bad';
+	}
+}() );
+</script>
+</body>
+</html>
