@@ -1,0 +1,23 @@
+[excerpt: scriptc 0.4.16 on stdlib's digest driver, as published and with one line changed, from a run that also covered scriptc 0.4.7 and 0.4.8 and a second form of the change; everything else is cut, marked in place]
+# [cut: the run script's name] 2026-11-23T11:31:22-0700; Darwin 25.6.0 arm64; macOS 26.7.3; Apple clang version 21.0.0 (clang-2100.3.34.2)
+# stdlib b64fd0cc2749bd6937d9ce55ec4555bad1d41e68; uncommitted changes there: 0
+94227cfe5116a286  103505 bytes  npm-none.js  from npm  patched: none
+2961b9f3d719af3d  103474 bytes  npm-2.js  from npm  patched: utils-define-property/lib/index.js
+[cut: two bundles with the second form of the change, not used here]
+4e08094244e7aefd  94901 bytes  source-none.js  from source  patched: none
+7918e089504dff90  94870 bytes  source-2.js  from source  patched: utils-define-property/lib/index.js
+
+[cut: Node.js on a probe program, not in this repository]
+
+[cut: scriptc 0.4.7]
+
+[cut: scriptc 0.4.8]
+
+== scriptc 0.4.16, sha256 49752bdb1c964aa3fb69e89a126e36fe168cfd6cf09b98e63e9659785ee487f1
+[cut: two probe programs, not in this repository]
+-- npm-none     exit 1/1,    1 lines, bits differs, repeat identical; last line: Uncaught TypeError: scriptc: Object.prototype reflection and mutation are not supported yet [SC1090]
+-- npm-2        exit 0/0, 4054 lines, bits IDENTICAL, repeat identical; last line: cases 4053
+[cut: the two rows for the second form of the change]
+-- source-none  exit 1/1,    1 lines, bits differs, repeat identical; last line: Uncaught TypeError: scriptc: Object.prototype reflection and mutation are not supported yet [SC1090]
+-- source-2     exit 0/0, 4054 lines, bits IDENTICAL, repeat identical; last line: cases 4053
+# stdlib uncommitted changes after: 0

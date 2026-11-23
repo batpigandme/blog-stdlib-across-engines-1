@@ -25,7 +25,8 @@ A digest is the SHA-256 of a run's output lines, so equal digests mean equal bit
 | Rhino before and after its fix | the same digest on the build with the `asinh` bug and on the fixed release | [`rhino/`](./rhino/) |
 | Integer work | stdlib's 8- and 16-bit paths giving the same output on every engine that loads them | [`integer-paths/`](./integer-paths/) |
 | otto and Elk | which programs run on each, and stdlib failing to load on otto | [`otto-elk/`](./otto-elk/) |
-| Engines that can't run stdlib | Quanta, Porffor, and scriptc, each with its error | [`cant-run/`](./cant-run/) |
+| Engines that can't run stdlib | Quanta and Porffor, each with its error | [`cant-run/`](./cant-run/) |
+| scriptc and stdlib's own gap | scriptc 0.4.16 stopping on stdlib's `__defineGetter__` read, and the digest bit for bit with one line changed | [`scriptc/`](./scriptc/) |
 
 [`setup/`](./setup/) records how the engines run on 22 November 2026 got onto the machine.
 

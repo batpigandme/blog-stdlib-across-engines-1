@@ -32,7 +32,7 @@ The macOS arm64 run of 21 October also ran most of the October engines, some at 
 | Elk | [`a9bb856`](https://github.com/cesanta/elk/tree/a9bb85619c5cddf49dfa8bdf529770fc9943a7fd) | Cloud x86_64, 2 Nov 2026; OrbStack aarch64, 22 Nov 2026 | the zoo, `20260303`, checked against the zoo's hash | `otto-elk/`, `setup/` |
 | Quanta | `767a49f` | Cloud x86_64, 2 Nov 2026 | the zoo, `20260303` | `cant-run/` |
 | Porffor | 0.0.0-alpha.19 | Cloud x86_64, 2 Nov 2026; OrbStack aarch64, 3 Nov 2026 | npm | `cant-run/` |
-| scriptc | 0.4.7 | Cloud x86_64, 2 Nov 2026 | npm | `cant-run/` |
+| scriptc | 0.4.7; [0.4.16](https://www.npmjs.com/package/scriptc/v/0.4.16), with Apple clang 21.0.0 | Cloud x86_64, 2 Nov 2026; macOS arm64, 23 Nov 2026 | npm | `scriptc/` |
 
 ## Runtimes
 
