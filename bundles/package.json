@@ -1,0 +1,13 @@
+{
+  "name": "blog-stdlib-across-engines-bundles",
+  "private": true,
+  "description": "The published @stdlib/* packages that bundles/npm.js was built from, pinned.",
+  "dependencies": {
+    "@stdlib/math-base-special-erf": "0.2.6",
+    "@stdlib/math-base-special-ldexp": "0.2.5",
+    "@stdlib/string-format": "0.2.3"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10"
+  }
+}
