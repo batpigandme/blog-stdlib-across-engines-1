@@ -62,6 +62,51 @@ page          http://localhost:8080/page/
 
 Firefox's record says "DIFFERS from the reference" because it was taken before the page's verdict wording changed, between the Firefox and Safari records. The wording is the only difference: the digests are computed the same way, and the NaN-equal digest, which matches, shows that only a NaN's encoding differs.
 
+## `tan( 7 )`, three browsers, 23 November 2026
+
+Results only: recorded the same way as the digest records, on the same Mac, the same day, and at the same browser versions, about three hours later, once the page had its `tan( 7 )` row. Each version is from the browser itself: Chrome 158.0.8127.37 (Official Build) (arm64), Firefox 160.0.1 (aarch64), and Safari 27.2 (21625.2.8.18.4). The row prints stdlib's `tan( 7 )`, from [`../bundles/tan7.js`](../bundles/), beside the browser's own `Math.tan( 7 )`, each as the bits of a double and as a decimal.
+
+| Browser | stdlib's `tan( 7 )` | The browser's own `Math.tan( 7 )` |
+| --- | --- | --- |
+| Chrome | `3febe2e6e13eea78`, `0.8714479827243187` | `3febe2e6e13eea79`, `0.8714479827243188` |
+| Firefox | `3febe2e6e13eea78`, `0.8714479827243187` | `3febe2e6e13eea78`, `0.8714479827243187` |
+| Safari | `3febe2e6e13eea78`, `0.8714479827243187` | `3febe2e6e13eea7a`, `0.8714479827243189` |
+
+stdlib's `tan( 7 )` gives the same bits in all three browsers. The browsers' own `Math.tan( 7 )` gives three different answers, the same three as in [the previous post's browser runs](https://github.com/stdlib-js/blog-whose-maths-is-it-1/tree/1.0.0/browsers) on 18 November 2026. The digests in these records are the same as in the digest records: Chrome's matches the reference bit for bit, and Firefox's and Safari's are `d89e89a8…`, NaN-equal. All three records carry the newer verdict wording. Each record, as the page printed it:
+
+```text
+date          2026-11-23T17:34:09.747Z
+bundle        bundles/npm.js, sha256 4aaee0922ebe97e0512703668f2c3196f118cebb2a387d927eba889ef3415b46
+lines         4054, last: cases 4053
+bit for bit   0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51  matches the reference
+NaN-equal     c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  matches the reference
+user agent    Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/158.0.0.0 Safari/537.36
+tan7 bundle   tan( 7 ) 3febe2e6e13eea78 0.8714479827243187 | Math.tan( 7 ) 3febe2e6e13eea79 0.8714479827243188
+page          http://localhost:8080/page/
+```
+
+```text
+date          2026-11-23T17:35:36.510Z
+bundle        bundles/npm.js, sha256 4aaee0922ebe97e0512703668f2c3196f118cebb2a387d927eba889ef3415b46
+lines         4054, last: cases 4053
+bit for bit   d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544  differs only in how a NaN is encoded
+NaN-equal     c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  matches the reference
+user agent    Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:160.0) Gecko/20100101 Firefox/160.0
+tan7 bundle   tan( 7 ) 3febe2e6e13eea78 0.8714479827243187 | Math.tan( 7 ) 3febe2e6e13eea78 0.8714479827243187
+page          http://localhost:8080/page/
+```
+
+```text
+date          2026-11-23T17:36:16.563Z
+bundle        bundles/npm.js, sha256 4aaee0922ebe97e0512703668f2c3196f118cebb2a387d927eba889ef3415b46
+lines         4054, last: cases 4053
+bit for bit   d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544  differs only in how a NaN is encoded
+NaN-equal     c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  matches the reference
+user agent    Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.2 Safari/605.1.15
+tan7 bundle   tan( 7 ) 3febe2e6e13eea78 0.8714479827243187 | Math.tan( 7 ) 3febe2e6e13eea7a 0.8714479827243189
+page          http://localhost:8080/page/
+```
+
 ## How it runs the bundle
 
 The driver prints with `print` when the host has one. In a browser the global `print` is `window.print`, which opens the print dialog, so the page runs the bundle's text as the body of a function whose own `print` parameter collects each line, and never touches the global. The bundle is ES5; the page's own script uses `fetch`, `async`, and `crypto.subtle`, which every browser it targets has.
