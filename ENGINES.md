@@ -28,7 +28,7 @@ The macOS arm64 run of 21 October also ran most of the October engines, some at 
 | Rhino | 2.0.0-SNAPSHOT at `7386aa0`, on OpenJDK 25.0.4.1 | Cloud x86_64, 2 Nov 2026 | the zoo, `20260303` | `digest/`, `rhino/` |
 | Rhino | [1.9.2](https://repo1.maven.org/maven2/org/mozilla/rhino-all/1.9.2/), on OpenJDK 25.0.2 | OrbStack aarch64, 22 Nov 2026 | Maven Central, checked against its sums | `rhino/`, `setup/` |
 | goja | `622d1007`, Go 1.26.10 | Cloud x86_64, 2 Nov 2026 | `go install` | `digest/` |
-| otto | [v0.5.1](https://github.com/robertkrimen/otto/tree/v0.5.1), Go 1.24.7 | Cloud x86_64, 2 Nov 2026; OrbStack aarch64, 22 Nov 2026 | `go install` | `otto-elk/`, `setup/` |
+| otto | [v0.5.1](https://github.com/robertkrimen/otto/tree/v0.5.1), Go 1.24.7; Go 1.27.4 on macOS | Cloud x86_64, 2 Nov 2026; OrbStack aarch64, 22 Nov 2026; macOS arm64, 23 Nov 2026 | `go install` | `otto-elk/`, `setup/` |
 | Elk | [`a9bb856`](https://github.com/cesanta/elk/tree/a9bb85619c5cddf49dfa8bdf529770fc9943a7fd) | Cloud x86_64, 2 Nov 2026; OrbStack aarch64, 22 Nov 2026 | the zoo, `20260303`, checked against the zoo's hash | `otto-elk/`, `setup/` |
 | Quanta | `767a49f` | Cloud x86_64, 2 Nov 2026 | the zoo, `20260303` | `cant-run/` |
 | Porffor | 0.0.0-alpha.19 | Cloud x86_64, 2 Nov 2026; OrbStack aarch64, 3 Nov 2026 | npm | `cant-run/` |

@@ -1,0 +1,40 @@
+# otto const probe; 2026-11-23T17:26:40Z
+# host: macOS 26.7.3 (25G342), arm64, Apple M1 Pro
+# go: go version go1.27.4 darwin/arm64
+# otto: ~/go/bin/otto, sha256 412179fb71d97a66, built by and from:
+#   ~/go/bin/otto: go1.27.4
+#   	path	github.com/robertkrimen/otto/otto
+#   	mod	github.com/robertkrimen/otto	v0.5.1	h1:avDI4ToRk8k1hppLdYFTuuzND41n37vPGJU7547dGf0=
+
+== const.js: const a = 1; console.log(a)
+$ ~/go/bin/otto -underscore=false const.js    # run 1
+(anonymous): Line 1:1 Unexpected reserved word
+[exit 64]
+$ ~/go/bin/otto -underscore=false const.js    # run 2
+(anonymous): Line 1:1 Unexpected reserved word
+[exit 64]
+
+== var.js: var a = 1; console.log(a)
+$ ~/go/bin/otto -underscore=false var.js    # run 1
+1
+[exit 0]
+$ ~/go/bin/otto -underscore=false var.js    # run 2
+1
+[exit 0]
+
+== let.js: let a = 1; console.log(a)
+$ ~/go/bin/otto -underscore=false let.js    # run 1
+(anonymous): Line 1:5 Unexpected identifier (and 1 more errors)
+[exit 64]
+$ ~/go/bin/otto -underscore=false let.js    # run 2
+(anonymous): Line 1:5 Unexpected identifier (and 1 more errors)
+[exit 64]
+
+== none.js: console.log(1 + 2)
+$ ~/go/bin/otto -underscore=false none.js    # run 1
+3
+[exit 0]
+$ ~/go/bin/otto -underscore=false none.js    # run 2
+3
+[exit 0]
+
