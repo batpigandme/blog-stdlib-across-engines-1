@@ -2,7 +2,7 @@
 
 > Captured results from earlier runs, not regenerated. This folder has no scripts.
 
-[scriptc](https://scriptc.dev), an ahead-of-time compiler, on stdlib's digest. At [scriptc 0.4.16](https://www.npmjs.com/package/scriptc/v/0.4.16), the current release, on macOS arm64 on 23 November 2026, stdlib as published compiles, then stops at once on a read of `__defineGetter__` in its own `define-property` polyfill, which loads even where it isn't used. With the polyfill's four reads of `Object.prototype` moved from module scope into the polyfill's function, so that they run only when the polyfill is called, scriptc gives the reference digest bit for bit, on both bundles. A second form of the change, loading the polyfill only in the branch that uses it, gives the same result, but stdlib doesn't take it: a conditional `require` breaks the translation of stdlib's CommonJS into ES modules. Both changes were written for a test; neither is stdlib's code, and whether stdlib wants the first is open. scriptc 0.4.7, on Linux x86_64 on 2 November 2026, stopped on the same read; that case is under [History](#history).
+[scriptc](https://scriptc.dev), an ahead-of-time compiler, on stdlib's digest. At [scriptc 0.4.16](https://www.npmjs.com/package/scriptc/v/0.4.16), the current release, on macOS arm64 on 23 November 2026, stdlib as published compiles, then stops at once on a read of `__defineGetter__` in its own `define-property` polyfill, which loads even where it isn't used. With the polyfill's four reads of `Object.prototype` moved from module scope into the polyfill's function, so that they run only when the polyfill is called, scriptc gives the reference digest bit for bit, on both bundles. A second form of the change, loading the polyfill only in the branch that uses it, gives the same result, but stdlib doesn't take it: a conditional `require` breaks the translation of stdlib's CommonJS into ES modules. Both changes were written for a test, and neither is a fix stdlib would take: the module-scope reads are deliberate, and the first change gives up the guard they provide (see [The change](#the-change)). scriptc 0.4.7, on Linux x86_64 on 2 November 2026, stopped on the same read; that case is under [History](#history).
 
 ## Tier
 
@@ -57,6 +57,8 @@ The polyfill's four reads of `Object.prototype` move from module scope into the 
 ```
 
 scriptc has `Object.defineProperty`, so stdlib's support check picks the built-in, and the polyfill's function, where the reads now are, is never called. In stdlib's repository at `b64fd0cc`, the polyfill reads `__defineGetter__`, `__defineSetter__`, `__lookupGetter__`, and `__lookupSetter__` at module level ([`utils/define-property/lib/polyfill.js`, lines 32–35](https://github.com/stdlib-js/stdlib/blob/b64fd0cc2749bd6937d9ce55ec4555bad1d41e68/lib/node_modules/%40stdlib/utils/define-property/lib/polyfill.js#L32-L35)), and `index.js` requires it unconditionally ([line 43](https://github.com/stdlib-js/stdlib/blob/b64fd0cc2749bd6937d9ce55ec4555bad1d41e68/lib/node_modules/%40stdlib/utils/define-property/lib/index.js#L43)). That static `require` stays.
+
+**The reads are deliberate.** Taken at module scope, they cache the accessors before other code can change `Object.prototype`, a guard against prototype pollution: a library that later replaces `Object.prototype.__defineGetter__` can't change what the polyfill calls. Moving the reads into the function gives that guard up, so this change shows what scriptc needs, not a fix stdlib would make.
 
 ### The form stdlib doesn't take
 
