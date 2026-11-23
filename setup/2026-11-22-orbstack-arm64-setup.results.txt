@@ -1,0 +1,62 @@
+# ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852 on linux/arm64
+# post3-reruns-linux.sh setup 2026-11-22T17:28:37+0000; Linux 7.2.12-orbstack-00394-gbecdd6130068 aarch64; arch arm64; run run2
+# PRETTY_NAME="Ubuntu 24.04.5 LTS"
+# VERSION_ID="24.04"
+
+== Rhino 1.9.2
+$ curl -fsSL -o bin/post3/arm64/rhino192/rhino-all-1.9.2.jar https://repo1.maven.org/maven2/org/mozilla/rhino-all/1.9.2/rhino-all-1.9.2.jar
+[exit 0]
+$ curl -fsSL -o bin/post3/arm64/rhino192/rhino-all-1.9.2.jar.sha1 https://repo1.maven.org/maven2/org/mozilla/rhino-all/1.9.2/rhino-all-1.9.2.jar.sha1
+[exit 0]
+$ curl -fsSL -o bin/post3/arm64/rhino192/rhino-all-1.9.2.jar.md5 https://repo1.maven.org/maven2/org/mozilla/rhino-all/1.9.2/rhino-all-1.9.2.jar.md5
+[exit 0]
+sha1 58b19fc7d72261f74666405c2f3e3b96ed6bfd57, Maven's .sha1 58b19fc7d72261f74666405c2f3e3b96ed6bfd57: MATCH
+md5 46e64f6df094c7e0fef2f24b97b21a78, Maven's .md5 46e64f6df094c7e0fef2f24b97b21a78: MATCH
+sha256 9b4fc23fdd7902beabd542099b6f590f05638dbbb054e9784f444982a6296493, the 2026-11-03 recheck's 9b4fc23fdd7902beabd542099b6f590f05638dbbb054e9784f444982a6296493: MATCH
+manifest: Implementation-Version: 1.9.2;Main-Class: org.mozilla.javascript.tools.shell.Main
+java: openjdk version "25.0.2-internal" 2026-01-20
+java: OpenJDK Runtime Environment (build 25.0.2-internal-adhoc.rattler.src)
+java: OpenJDK 64-Bit Server VM (build 25.0.2-internal-adhoc.rattler.src, mixed mode)
+
+== otto at v0.5.1
+$ go version
+go version go1.24.7 linux/arm64
+[exit 0]
+$ go install github.com/robertkrimen/otto/otto@v0.5.1
+go: downloading github.com/robertkrimen/otto v0.5.1
+go: downloading golang.org/x/text v0.4.0
+go: downloading gopkg.in/sourcemap.v1 v1.0.5
+[exit 0]
+   bin/post3/arm64/go/bin/otto: go1.24.7
+   	path	github.com/robertkrimen/otto/otto
+   	mod	github.com/robertkrimen/otto	v0.5.1	h1:avDI4ToRk8k1hppLdYFTuuzND41n37vPGJU7547dGf0=
+   	dep	golang.org/x/text	v0.4.0	h1:BrVqGRd7+k1DiOgtnFvAkoQEWQvBc25ouMJM6429SFg=
+   	dep	gopkg.in/sourcemap.v1	v1.0.5	h1:inv58fC9f9J3TK2Y2R1NPntXEn3/wjWHkonhIUODNTI=
+   	build	-buildmode=exe
+   	build	-compiler=gc
+   	build	DefaultGODEBUG=asynctimerchan=1,gotestjsonbuildtext=1,gotypesalias=0,httpservecontentkeepheaders=1,multipathtcp=0,randseednop=0,rsa1024min=0,tls3des=1,tlsmlkem=0,winreadlinkvolume=0,winsymlink=0,x509keypairleaf=0,x509negativeserial=1,x509rsacrt=0,x509usepolicies=0
+   	build	CGO_ENABLED=1
+   	build	CGO_CFLAGS=
+   	build	CGO_CPPFLAGS=
+   	build	CGO_CXXFLAGS=
+   	build	CGO_LDFLAGS=
+   	build	GOARCH=arm64
+   	build	GOOS=linux
+   	build	GOARM64=v8.0
+otto binary sha256 d229b5b424b38442b66c5795520bf3039d4ad8287acbbd4ec1aecd38f1690e87
+
+== Elk, the JavaScript engines zoo 20260303, arm64
+$ curl -fsSL -o bin/post3/arm64/zoo/cesanta-elk.arm64.tar.zst https://github.com/ivankra/javascript-zoo/releases/download/20260303/cesanta-elk.arm64.tar.zst
+[exit 0]
+tarball sha256 b33814ff27c7be2338f62f5e41e60433deebaea096d32cbdbe5ff7c6b98eccb9
+$ tar --zstd -xf bin/post3/arm64/zoo/cesanta-elk.arm64.tar.zst -C bin/post3/arm64/zoo/cesanta-elk
+[exit 0]
+   total 76
+   -r-xr-xr-x 1 root root 68048 Mar  3  2026 cesanta-elk
+   -r--r--r-- 1 root root   733 Mar  3  2026 cesanta-elk.LICENSE
+   -r--r--r-- 1 root root   470 Mar  3  2026 cesanta-elk.json
+binary sha256 71783fc285b8a6c58932d31d4646d0a02de86070029597a43663793defe6f7a2, saved Zoo data 71783fc285b8a6c58932d31d4646d0a02de86070029597a43663793defe6f7a2: MATCH
+
+[cut: the install of two ahead-of-time compilers for a run this repository doesn't include]
+
+# done 2026-11-22T17:28:59+0000

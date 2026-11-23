@@ -1,0 +1,16 @@
+# post3-reruns-host.sh host 2026-11-22T10:26:08-0700
+ProductName:		macOS
+ProductVersion:		26.7.3
+BuildVersion:		25G342
+chip: Apple M1 Pro, 32 GiB
+orb: Version: 2.2.5 (2020500) Commit: bf842321f95fc3ca7cda3227bf0cd41cb188c471 (v2.2.5) 
+docker: client 29.8.2, server 29.8.2 linux/arm64
+
+## base image ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852
+Status: Downloaded newer image for ubuntu@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852
+docker.io/library/ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852
+pixi.toml sha256 7511354e28a522d7; pixi.lock sha256 f2f40011c4487dca
+
+## pixi v0.83.0 for the container, from its own release, checked against its published sum
+$ curl https://github.com/prefix-dev/pixi/releases/download/v0.83.0/pixi-aarch64-unknown-linux-musl.tar.gz
+pixi-aarch64-unknown-linux-musl.tar.gz sha256 d08403d8f048626ec93ba7b7c56e3b747a5f3a95c4e6e0c815ceb264f5f0b9ce, published d08403d8f048626ec93ba7b7c56e3b747a5f3a95c4e6e0c815ceb264f5f0b9ce: MATCH
