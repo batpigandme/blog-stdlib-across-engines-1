@@ -1,0 +1,123 @@
+# local cross-engine run of the cloud's erf/ldexp bundles; 2026-10-21T19:42:13-0600
+# macOS 26.6.2 arm64, Apple M1 Pro
+# bundles/npm.js sha256 4aaee0922ebe97e0
+# bundles/source.js sha256 60845e945fa81fad
+
+## 1. bundled path, reference v8-15.8.32
+npm.js on v8-15.8.32                     bits: identical  nan-equal: identical  4054 lines
+npm.js on spidermonkey-159.0b5           bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+npm.js on javascriptcore-324323          bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+npm.js on xs-10.0.2                      bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+npm.js on quickjs-ng-0.17.0              bits: identical  nan-equal: identical  4054 lines
+npm.js on hermes-0.13.0                  bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+npm.js on duktape-2.7.0                  bits: identical  nan-equal: identical  4054 lines
+npm.js on jerryscript-3.0.0              bits: identical  nan-equal: identical  4054 lines
+npm.js on boa-0.22                       bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+npm.js on engine262                      bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+npm.js on node-22.22.1                   bits: identical  nan-equal: identical  4054 lines
+npm.js on node-24.19.0                   bits: identical  nan-equal: identical  4054 lines
+npm.js on node-26.7.0                    bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7
+npm.js on bare-1.36.0                    bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7
+npm.js on v8-13.6.233                    bits: identical  nan-equal: identical  4054 lines
+npm.js on v8-14.1.146                    bits: identical  nan-equal: identical  4054 lines
+npm.js on v8-14.6.202                    bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7
+npm.js on v8-15.4.8                      bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7
+npm.js on spidermonkey-155.0b1           bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+npm.js on javascriptcore-319418          bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+npm.js on xs-9.0.0                       bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+npm.js on node-26.12.0                   bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7
+npm.js on mqjs                           bits: identical  nan-equal: identical  4054 lines
+npm.js on mqjs-soft                      bits: identical  nan-equal: identical  4054 lines
+source.js on v8-15.8.32                  bits: identical  nan-equal: identical  4054 lines
+source.js on spidermonkey-159.0b5        bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+source.js on javascriptcore-324323       bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+source.js on xs-10.0.2                   bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+source.js on quickjs-ng-0.17.0           bits: identical  nan-equal: identical  4054 lines
+source.js on hermes-0.13.0               bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+source.js on duktape-2.7.0               bits: identical  nan-equal: identical  4054 lines
+source.js on jerryscript-3.0.0           bits: identical  nan-equal: identical  4054 lines
+source.js on boa-0.22                    bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+source.js on engine262                   bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+source.js on node-22.22.1                bits: identical  nan-equal: identical  4054 lines
+source.js on node-24.19.0                bits: identical  nan-equal: identical  4054 lines
+source.js on node-26.7.0                 bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7
+source.js on bare-1.36.0                 bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7
+source.js on v8-13.6.233                 bits: identical  nan-equal: identical  4054 lines
+source.js on v8-14.1.146                 bits: identical  nan-equal: identical  4054 lines
+source.js on v8-14.6.202                 bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7
+source.js on v8-15.4.8                   bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7
+source.js on spidermonkey-155.0b1        bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+source.js on javascriptcore-319418       bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+source.js on xs-9.0.0                    bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+source.js on node-26.12.0                bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7
+source.js on mqjs                        bits: identical  nan-equal: identical  4054 lines
+source.js on mqjs-soft                   bits: identical  nan-equal: identical  4054 lines
+
+## 2. direct path (runtimes, node_modules, no bundle)
+driver.js on node-22.22.1                bits: identical  nan-equal: identical  4054 lines
+driver.js on node-24.19.0                bits: identical  nan-equal: identical  4054 lines
+driver.js on node-26.7.0                 bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7
+driver.js on bare-1.36.0                 bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7
+driver.js on node-26.12.0                bits: DIFFERS    nan-equal: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp ffff97b7ad2f57d7 424 ffff97b7ad2f57d7

@@ -1,0 +1,199 @@
+# unrun-stdlib-math.sh 2026-11-02T12:56:46-07:00; uptime -s 2026-11-02 11:48:36; Linux 6.18.44-fc-v185 x86_64; variants=1; per-run cap 120 s
+# Model name:                              Intel(R) Xeon(R) Processor @ 2.10GHz
+# L1d cache:                               192 KiB (4 instances)
+# L2 cache:                                8 MiB (4 instances)
+# L3 cache:                                260 MiB (1 instance)
+# 4aaee0922ebe97e0  npm.js
+# 60845e945fa81fad  source.js
+# 12575d566b2135b0  driver.js
+# f022300acf07a5fc  unrun-math-control.js
+# node24-ref binary sha256 bc17c508ffeed0ec
+# variant bundle npm.nibble.js: 1 line changed; sha256 031431d97cff4e72
+# variant bundle source.nibble.js: 1 line changed; sha256 83aca002b546a98b
+
+## stdlib bundle: bundles/npm.js, against node24-ref
+reference digest (node24-ref, bundles/npm.js): sha256 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51, 4054 lines, repeat identical
+reference digest under NaN-equality: sha256 c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb
+libjs                      digest bf358dc00491810b  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical  4054 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 4054 of 4054
+      ESC bytes in output (4054 lines); with SGR escapes stripped: digest 15df3a81e5e25511  bits: DIFFERS   nan-equal: DIFFERS
+libjs-raw                  digest d89e89a8c686d154  bits: DIFFERS   nan-equal: identical repeat: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+      differing lines: 1 of 4054
+kiesel                     digest 99e65d72d195a267  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical  4054 lines
+      < erf 8000000000000000 8000000000000000
+      > erf 214748364800000000 214748364800000000
+      < erf fff0000000000000 bff0000000000000
+      > erf 429391872000000000 322017689600000000
+      differing lines: 3353 of 4054
+nova                       digest 0bf2fbde5ee4eb09  bits: identical nan-equal: identical repeat: identical  4054 lines
+elk                        NOT RUN: no var, arrays or Math; the bundle cannot parse
+njs                        digest 0bf2fbde5ee4eb09  bits: identical nan-equal: identical repeat: identical  4054 lines
+quanta                     digest 539375348ba67f71  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical     1 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 1 of 4054
+rhino                      digest f3d3c989619edcb8  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical  4053 lines
+      > Picked up JAVA_TOOL_OPTIONS: […]
+      > WARNING: A restricted method in java.lang.System has been called
+      > WARNING: java.lang.System::load has been called by org.jline.nativ.JLineNativeLoader in an unnamed module (file:…
+      > WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+      differing lines: 8 of 4054
+goja                       digest dc7c3a80ae4b8b9b  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical  4054 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 4054 of 4054
+otto                       digest c1ab15b0daf4dda7  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical     7 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 7 of 4054
+porffor                    digest d6a37d1d3cc2eb9b  bits: DIFFERS   nan-equal: DIFFERS   repeat: DIFFERS      48 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 48 of 4054
+porffor-run                digest b17c2cbca3875dca  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical    42 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 42 of 4054
+scriptc                    digest df6cfbf1d5ef0c73  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical     1 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 1 of 4054
+-- variants (labelled; not the rows above)
+node24-ref, nibble bundle  digest 0bf2fbde5ee4eb09  bits: identical nan-equal: identical repeat: (control)  4054 lines
+kiesel-nibble              digest d89e89a8c686d154  bits: DIFFERS   nan-equal: identical repeat: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+      differing lines: 1 of 4054
+goja-stderr                digest 95f83acd2dd572d5  bits: DIFFERS   nan-equal: identical repeat: identical  4054 lines
+      < erf 7ff8000000000000 7ff8000000000000
+      > erf 7ff8000000000001 7ff8000000000001
+      < ldexp 7ff8000000000000 1 7ff8000000000000
+      > ldexp 7ff8000000000001 1 7ff8000000000001
+      differing lines: 3 of 4054
+rhino-tty                  digest d89e89a8c686d154  bits: DIFFERS   nan-equal: identical repeat: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+      differing lines: 1 of 4054
+porffor-run-stdout         digest e3b0c44298fc1c14  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical     0 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 0 of 4054
+
+## stdlib bundle: bundles/source.js, against node24-ref
+reference digest (node24-ref, bundles/source.js): sha256 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51, 4054 lines, repeat identical
+reference digest under NaN-equality: sha256 c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb
+libjs                      digest bf358dc00491810b  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical  4054 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 4054 of 4054
+      ESC bytes in output (4054 lines); with SGR escapes stripped: digest 15df3a81e5e25511  bits: DIFFERS   nan-equal: DIFFERS
+libjs-raw                  digest d89e89a8c686d154  bits: DIFFERS   nan-equal: identical repeat: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+      differing lines: 1 of 4054
+kiesel                     digest 99e65d72d195a267  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical  4054 lines
+      < erf 8000000000000000 8000000000000000
+      > erf 214748364800000000 214748364800000000
+      < erf fff0000000000000 bff0000000000000
+      > erf 429391872000000000 322017689600000000
+      differing lines: 3353 of 4054
+nova                       digest 0bf2fbde5ee4eb09  bits: identical nan-equal: identical repeat: identical  4054 lines
+elk                        NOT RUN: no var, arrays or Math; the bundle cannot parse
+njs                        digest 0bf2fbde5ee4eb09  bits: identical nan-equal: identical repeat: identical  4054 lines
+quanta                     digest 539375348ba67f71  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical     1 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 1 of 4054
+rhino                      digest f3d3c989619edcb8  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical  4053 lines
+      > Picked up JAVA_TOOL_OPTIONS: […]
+      > WARNING: A restricted method in java.lang.System has been called
+      > WARNING: java.lang.System::load has been called by org.jline.nativ.JLineNativeLoader in an unnamed module (file:…
+      > WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+      differing lines: 8 of 4054
+goja                       digest 8a3115675eac522a  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical  4054 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 4054 of 4054
+otto                       digest 44e6ca4e0db330e3  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical     7 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 7 of 4054
+porffor                    digest 1c74ac9bbd2bf40a  bits: DIFFERS   nan-equal: DIFFERS   repeat: DIFFERS      48 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 48 of 4054
+porffor-run                digest db10b4a31b796c3c  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical    42 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 42 of 4054
+scriptc                    digest df6cfbf1d5ef0c73  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical     1 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 1 of 4054
+-- variants (labelled; not the rows above)
+node24-ref, nibble bundle  digest 0bf2fbde5ee4eb09  bits: identical nan-equal: identical repeat: (control)  4054 lines
+kiesel-nibble              digest d89e89a8c686d154  bits: DIFFERS   nan-equal: identical repeat: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+      differing lines: 1 of 4054
+goja-stderr                digest 95f83acd2dd572d5  bits: DIFFERS   nan-equal: identical repeat: identical  4054 lines
+      < erf 7ff8000000000000 7ff8000000000000
+      > erf 7ff8000000000001 7ff8000000000001
+      < ldexp 7ff8000000000000 1 7ff8000000000000
+      > ldexp 7ff8000000000001 1 7ff8000000000001
+      differing lines: 3 of 4054
+rhino-tty                  digest d89e89a8c686d154  bits: DIFFERS   nan-equal: identical repeat: identical  4054 lines
+      < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+      > ldexp 7ff8000000000000 424 7ff8000000000000
+      differing lines: 1 of 4054
+porffor-run-stdout         digest e3b0c44298fc1c14  bits: DIFFERS   nan-equal: DIFFERS   repeat: identical     0 lines
+      < erf 0000000000000000 0000000000000000
+      < erf 8000000000000000 8000000000000000
+      < erf 7ff8000000000000 7ff8000000000000
+      < erf 7ff0000000000000 3ff0000000000000
+      differing lines: 0 of 4054
+
+[cut: two sections on the engines' own Math functions, which this repository doesn't cover]
+
+## capped runs
+  quanta npm.js npm-quanta.txt cap 120s
+  quanta npm.js npm-quanta.txt.2 cap 120s
+  quanta source.js source-quanta.txt cap 120s
+  quanta source.js source-quanta.txt.2 cap 120s
+raw outputs: 2026-11-02-cloud-x86_64-engines-outputs.tar.xz (the npm-*, source-*, and ref-* files only)
+
+# done 2026-11-02T13:17:43-07:00
