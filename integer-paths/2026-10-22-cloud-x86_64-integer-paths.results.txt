@@ -1,0 +1,69 @@
+# integer paths across engines; 2026-10-22T18:15:00-06:00; container uptime -s 2026-10-22 17:48:33
+# host: Linux 6.18.44-fc-v140 x86_64, Intel(R) Xeon(R) Processor @ 2.80GHz
+# bundle: bundles/driver.js sha256 3b34cd9b738fdeb4, stdlib 8e3f446c4620
+
+## Negative control: can the oracle fail?
+control ok: oracle rejects a changed value -> oracle: WRONG ops.mul uint16,uint16->uint16 (first difference at 1)
+
+## Bundled (bundles/driver.js), every binary
+# stdout is scored; stderr is kept apart in out/<name>.err (Hermes prints compiler warnings there)
+v8-13.6.233                        exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+v8-14.1.146                        exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+v8-14.6.202                        exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+v8-15.4.8                          exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+v8-15.8.32                         exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+spidermonkey-159.0b5               exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+spidermonkey-115.10.0              exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+javascriptcore-324323              exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+javascriptcore-webkitgtk-2.52.6    exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+xs-10.0.2                          exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+quickjs-ng-0.17.0                  exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+quickjs-2021-03-27                 exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+hermes-0.13.0                      exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+graaljs-25.0.3                     exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+duktape-2.7.0                      exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+jerryscript-3.0.0                  exit 10       5 lines  5150d962a1a0  native             did not complete (error below)
+boa-0.22                           exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+engine262                          exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+node-22.22.0                       exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+node-24.19.0                       exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+node-26.7.0                        exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+bare-1.36.0                        exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+txiki-26.6.0                       exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+mqjs                               exit 1        0 lines  e3b0c44298fc                     did not complete (error below)
+mqjs-soft                          exit 1        0 lines  e3b0c44298fc                     did not complete (error below)
+mqjs-arm32-softfp                  exit 1        0 lines  e3b0c44298fc                     did not complete (error below)
+
+## Retries, each with the one change named, after a failure above
+# MQuickJS: bundles/driver.mqjs.js adds shims for Object.prototype.propertyIsEnumerable and
+# isPrototypeOf, which it lacks and the strided dispatch path calls [cut: a note reference].
+mqjs+objshims                      exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+mqjs-soft+objshims                 exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+mqjs-arm32-softfp+objshims         exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+# JerryScript: exit 10 is JERRY_FATAL_OUT_OF_MEMORY at its default heap; N=1024 instead of 4096.
+jerryscript-3.0.0+n1024            exit 0       23 lines  918752e38eeb  native             oracle: 15 of 15 lines correct
+# Node 26.7.0 at N=1024, so the JerryScript row has an output to be compared with byte for byte
+node-26.7.0+n1024                  exit 0       23 lines  918752e38eeb  native             oracle: 15 of 15 lines correct
+# Every engine has Math.imul, so stdlib's polyfill (number/int32/base/mul/lib/polyfill.js) ran nowhere
+# above. Removed before the bundle loads, on two engines, so the polyfill path is the one measured:
+node-26.7.0+noimul                 exit 0       23 lines  cdc6dd7c3eef  absent (stdlib pol oracle: 15 of 15 lines correct
+duktape-2.7.0+noimul               exit 0       23 lines  cdc6dd7c3eef  absent (stdlib pol oracle: 15 of 15 lines correct
+
+## Unbundled (driver.js, require resolved from the stdlib checkout)
+direct-node-22.22.0                exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+direct-node-24.19.0                exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+direct-node-26.7.0                 exit 0       23 lines  2117a64ea336  native             oracle: 15 of 15 lines correct
+direct-bare-1.36.0                 exit 134      0 lines  e3b0c44298fc                     did not complete (error below)
+# a failed row's error: last line of out/<name>.err
+  direct-bare-1.36.0                 Uncaught ModuleError: MODULE_NOT_FOUND: Cannot find module 'path' imported from 'file://~/stdlib-8e3f446/lib/no
+  jerryscript-3.0.0                  
+  mqjs-arm32-softfp                  TypeError: cannot read property 'call' of undefined
+  mqjs-soft                          TypeError: cannot read property 'call' of undefined
+  mqjs                               TypeError: cannot read property 'call' of undefined
+txiki.js: not run unbundled -- tjs loads every file as an ECMAScript module, which has no require.
+engine shells: not run unbundled -- no module resolution [cut: a note reference].
+
+## Identical-output groups (by SHA-256 of the whole output; completed runs only)
+  [2117a64ea336] bare-1.36.0, boa-0.22, direct-node-22.22.0, direct-node-24.19.0, direct-node-26.7.0, duktape-2.7.0, engine262, graaljs-25.0.3, hermes-0.13.0, javascriptcore-324323, javascriptcore-webkitgtk-2.52.6, mqjs+objshims, mqjs-arm32-softfp+objshims, mqjs-soft+objshims, node-22.22.0, node-24.19.0, node-26.7.0, quickjs-2021-03-27, quickjs-ng-0.17.0, spidermonkey-115.10.0, spidermonkey-159.0b5, txiki-26.6.0, v8-13.6.233, v8-14.1.146, v8-14.6.202, v8-15.4.8, v8-15.8.32, xs-10.0.2
+  [918752e38eeb] jerryscript-3.0.0+n1024, node-26.7.0+n1024
+  [cdc6dd7c3eef] duktape-2.7.0+noimul, node-26.7.0+noimul

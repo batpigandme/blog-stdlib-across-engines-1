@@ -23,6 +23,7 @@ A digest is the SHA-256 of a run's output lines, so equal digests mean equal bit
 | Node.js across release lines | stdlib's digest on Node.js 20 to the 27 alpha, on two hosts, beside `Math`'s own | [`node-lines/`](./node-lines/) |
 | The browsers | the page that takes the digest in a browser | [`page/`](./page/) |
 | Rhino before and after its fix | the same digest on the build with the `asinh` bug and on the fixed release | [`rhino/`](./rhino/) |
+| Integer work | stdlib's 8- and 16-bit paths giving the same output on every engine that loads them | [`integer-paths/`](./integer-paths/) |
 | otto and Elk | which programs run on each, and stdlib failing to load on otto | [`otto-elk/`](./otto-elk/) |
 | Engines that can't run stdlib | Quanta, Porffor, and scriptc, each with its error | [`cant-run/`](./cant-run/) |
 

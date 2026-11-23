@@ -4,7 +4,7 @@ Every engine, runtime, and tool a result in this repository comes from: its vers
 
 ## Engines
 
-The macOS arm64 run of 21 October also ran most of the October engines, some at older versions too; its file in `digest/` names each binary it ran.
+The macOS arm64 run of 21 October also ran most of the October engines, some at older versions too; its file in `digest/` names each binary it ran. The Cloud x86_64 run of 22 October, in `integer-paths/`, ran the same Cloud engines and runtimes, plus d8 13.6.233, 14.1.146, 14.6.202, and 15.4.8 and three builds of MicroQuickJS; its transcript names each binary.
 
 | Engine | Version or commit | Host, date | How it was obtained | Folder |
 | --- | --- | --- | --- | --- |
