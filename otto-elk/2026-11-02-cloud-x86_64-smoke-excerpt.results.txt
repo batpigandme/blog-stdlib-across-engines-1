@@ -1,0 +1,47 @@
+[excerpt: the header, otto's and Elk's version lines, and sections 10 and 12 of a longer run; the rest covers other engines]
+# unrun-smoke-probes.sh 2026-11-02T12:12:52-07:00; uptime -s 2026-11-02 11:48:36; Linux 6.18.44-fc-v185 x86_64
+# Model name:                              Intel(R) Xeon(R) Processor @ 2.10GHz
+# L1d cache:                               192 KiB (4 instances)
+# L2 cache:                                8 MiB (4 instances)
+# L3 cache:                                260 MiB (1 instance)
+## versions
+engine   elk              no version flag; 2.2.0-30-ga9bb856 (Zoo revision a9bb85619c5cddf49dfa8bdf529770fc9943a7fd, release 20260303) bin/unrun/zoo/cesanta-elk/cesanta-elk
+engine   otto             no version flag; otto (github.com/robertkrimen/otto) v0.5.1; go1.24.7 bin/unrun/go/bin/otto
+
+## 10. otto: typed arrays
+[the probe: console.log(typeof Float64Array, typeof Uint32Array, typeof ArrayBuffer, typeof Math.fround, typeof JSON);]
+-- otto
+undefined undefined undefined undefined object
+   (second run identical)
+
+## 12. Elk: illustration only (no Math, no arrays, no JSON)
+let a = 1; let b = 2; console.log(a + b);                                -> 3
+let s = 0; for (let i = 1; i <= 1000; i++) { s += i; } console.log(s);   -> 500500
+let f = function(x) { return x * 2; }; console.log(f(21));               -> 42
+let o = {a: 1}; console.log(o.a);                                        -> 1
+console.log("a" + "b");                                                  -> "ab"
+console.log(0.1 + 0.2);                                                  -> 0.3
+console.log(1e21);                                                       -> 1e+21
+console.log(typeof print, typeof console);                               -> "cfunc" "object"
+print(1);                                                                -> 1
+var x = 1;                                                               -> Error: ERROR: 'var' not implemented
+const c = 1;                                                             -> Error: ERROR: 'const' not implemented
+let i = 0; while (i < 3) { i++; }                                        -> Error: ERROR: 'while' not implemented
+let a = [1, 2];                                                          -> Error: ERROR: parse error
+console.log(typeof Math);                                                -> ERROR: 'Math' not found
+console.log(Math.sin(1));                                                -> ERROR: 'Math' not found
+console.log(JSON.stringify({a: 1}));                                     -> ERROR: 'JSON' not found
+console.log("sum: " + 500500);                                           -> ERROR: type mismatch
+-- toy snippet: interpreting source directly
+   let fib = function(n) { if (n < 2) return n; return fib(n - 1) + fib(n - 2); };
+   let s = 0;
+   for (let i = 0; i < 20; i++) { s += fib(i); }
+   console.log(s);
+-- elk toy.js
+10945
+   (second run identical)
+-- node24-ref toy.js
+10945
+   (second run identical)
+
+# done 2026-11-02T12:13:35-07:00

@@ -1,0 +1,86 @@
+# post3-otto-printer-build.sh 2026-11-22T10:26:04-0700; Darwin 25.6.0 arm64
+# node v24.22.3 V8 13.6.233.17-node.63
+# cb3c1cde1d54c124  otto-printer.js
+# a299c39ce7e31af7  package-lock.json
+$ npm ci --no-audit --no-fund
+
+added 148 packages in 1s
+npm warn install-scripts 1 package has install scripts not yet covered by allowScripts:
+npm warn install-scripts   esbuild@0.25.10 (postinstall: node install.js)
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+[exit 0]
+$ ./node_modules/.bin/esbuild --version
+0.25.10
+[exit 0]
+$ ./node_modules/.bin/esbuild otto-printer.js --bundle --format=iife --target=es5 --log-level=warning --outfile=bin/post3/otto-printer.js
+[exit 0]
+# 6a48741a93e2bae7e1611b3baeabdf0b7ef0acf2557db441cdca352075cd93de  bin/post3/otto-printer.js, 86467 bytes
+# packages bundled:
+#     // node_modules/@stdlib/array-float64/lib/
+#     // node_modules/@stdlib/array-uint16/lib/
+#     // node_modules/@stdlib/array-uint32/lib/
+#     // node_modules/@stdlib/array-uint8/lib/
+#     // node_modules/@stdlib/assert-has-float64array-support/lib/
+#     // node_modules/@stdlib/assert-has-own-property/lib/
+#     // node_modules/@stdlib/assert-has-symbol-support/lib/
+#     // node_modules/@stdlib/assert-has-tostringtag-support/lib/
+#     // node_modules/@stdlib/assert-has-uint16array-support/lib/
+#     // node_modules/@stdlib/assert-has-uint32array-support/lib/
+#     // node_modules/@stdlib/assert-has-uint8array-support/lib/
+#     // node_modules/@stdlib/assert-is-float64array/lib/
+#     // node_modules/@stdlib/assert-is-little-endian/lib/
+#     // node_modules/@stdlib/assert-is-uint16array/lib/
+#     // node_modules/@stdlib/assert-is-uint32array/lib/
+#     // node_modules/@stdlib/assert-is-uint8array/lib/
+#     // node_modules/@stdlib/constants-float64-exponent-bias/lib/
+#     // node_modules/@stdlib/constants-float64-high-word-abs-mask/lib/
+#     // node_modules/@stdlib/constants-float64-high-word-exponent-mask/lib/
+#     // node_modules/@stdlib/constants-float64-high-word-sign-mask/lib/
+#     // node_modules/@stdlib/constants-float64-max-base2-exponent-subnormal/lib/
+#     // node_modules/@stdlib/constants-float64-max-base2-exponent/lib/
+#     // node_modules/@stdlib/constants-float64-min-base2-exponent-subnormal/lib/
+#     // node_modules/@stdlib/constants-float64-ninf/lib/
+#     // node_modules/@stdlib/constants-float64-pinf/lib/
+#     // node_modules/@stdlib/constants-float64-smallest-normal/lib/
+#     // node_modules/@stdlib/constants-uint16-max/lib/
+#     // node_modules/@stdlib/constants-uint32-max/lib/
+#     // node_modules/@stdlib/constants-uint8-max/lib/
+#     // node_modules/@stdlib/math-base-assert-is-infinite/lib/
+#     // node_modules/@stdlib/math-base-assert-is-nan/lib/
+#     // node_modules/@stdlib/math-base-special-abs/lib/
+#     // node_modules/@stdlib/math-base-special-ceil/lib/
+#     // node_modules/@stdlib/math-base-special-copysign/lib/
+#     // node_modules/@stdlib/math-base-special-erf/lib/
+#     // node_modules/@stdlib/math-base-special-exp/lib/
+#     // node_modules/@stdlib/math-base-special-floor/lib/
+#     // node_modules/@stdlib/math-base-special-ldexp/lib/
+#     // node_modules/@stdlib/math-base-special-trunc/lib/
+#     // node_modules/@stdlib/number-ctor/lib/
+#     // node_modules/@stdlib/number-float64-base-exponent/lib/
+#     // node_modules/@stdlib/number-float64-base-from-words/lib/
+#     // node_modules/@stdlib/number-float64-base-get-high-word/lib/
+#     // node_modules/@stdlib/number-float64-base-normalize/lib/
+#     // node_modules/@stdlib/number-float64-base-set-low-word/lib/
+#     // node_modules/@stdlib/number-float64-base-to-words/lib/
+#     // node_modules/@stdlib/string-base-format-interpolate/lib/
+#     // node_modules/@stdlib/string-base-format-tokenize/lib/
+#     // node_modules/@stdlib/string-format/lib/
+#     // node_modules/@stdlib/symbol-ctor/lib/
+#     // node_modules/@stdlib/utils-define-nonenumerable-read-only-property/lib/
+#     // node_modules/@stdlib/utils-define-property/lib/
+#     // node_modules/@stdlib/utils-native-class/lib/
+
+## the control: Node.js 24.22.3
+$ ~/.nvm/versions/node/v24.22.3/bin/node bin/post3/otto-printer.js
+loaded
+erf 0 0
+erf 0.1 0.1124629160182849
+erf 0.5 0.5204998778130465
+erf 1 0.8427007929497149
+erf -1.5 -0.9661051464753108
+erf 2 0.9953222650189527
+erf 3 0.9999779095030014
+erf 6 1
+cases 8
+[exit 0]

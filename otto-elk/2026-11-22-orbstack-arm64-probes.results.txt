@@ -1,0 +1,37 @@
+# ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852 on linux/arm64
+# post3-reruns-linux.sh probes 2026-11-22T17:30:32+0000; Linux 7.2.12-orbstack-00394-gbecdd6130068 aarch64; arch arm64; run run2
+# PRETTY_NAME="Ubuntu 24.04.5 LTS"
+# VERSION_ID="24.04"
+otto sha256 d229b5b424b38442b66c5795520bf3039d4ad8287acbbd4ec1aecd38f1690e87; Elk sha256 71783fc285b8a6c58932d31d4646d0a02de86070029597a43663793defe6f7a2
+probe var: var a = 1; console.log(a);
+probe let: let a = 1; console.log(a);
+probe nodecl: console.log(1 + 2);
+
+== otto
+-- otto-var [exits 0 0], repeat identical
+   1
+-- otto-let [exits 64 64], repeat identical
+   (anonymous): Line 1:5 Unexpected identifier (and 1 more errors)
+-- otto-nodecl [exits 0 0], repeat identical
+   3
+
+== Elk
+-- elk-var [exits 1 1], repeat identical
+   Error: ERROR: 'var' not implemented
+-- elk-let [exits 0 0], repeat identical
+   1
+-- elk-nodecl [exits 0 0], repeat identical
+   3
+
+== the otto printer
+otto-printer.js sha256 6a48741a93e2bae7e1611b3baeabdf0b7ef0acf2557db441cdca352075cd93de
+-- otto-printer [exits 64 64], repeat identical
+   Error: not implemented
+       at polyfill (<anonymous>:1420:19)
+       at isLittleEndian (<anonymous>:1466:26)
+       at <anonymous>:1471:14
+       at <anonymous>:1480:30
+       at <anonymous>:1489:28
+       at <anonymous>:1514:21
+
+# done 2026-11-22T17:30:33+0000
