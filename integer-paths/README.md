@@ -46,6 +46,6 @@ Each binary ran the bundle with its output on standard output, which was hashed 
 
 ## Changes from the run
 
-- **The transcript:** the stdlib checkout's path, `/home/user/`, becomes `~/` (one line), and two references to notes outside this repository are cut in place, each marked `[cut: a note reference]`.
+- **The transcript:** the stdlib checkout's path, `/home/user/`, becomes `~/` (one line), and two references to documents outside this repository are cut in place, each marked `[cut: a note reference]`.
 - **The outputs:** the same path becomes `~/` in `direct-bare-1.36.0.err`, the only file that had it. The files were then re-archived in sorted order; none was added, removed, or otherwise changed.
 - **Left out:** the driver, the bundle, the check's own code, and the scripts that ran them, since this folder holds results only; and the same run's measurements of MicroQuickJS's bytecode and heap sizes, which are about cost, not agreement.

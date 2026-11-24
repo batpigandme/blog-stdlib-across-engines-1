@@ -37,4 +37,4 @@ The bundle line cited is a line of [`../bundles/npm.js`](../bundles/npm.js), so 
 
 ## Changes from the run
 
-The excerpt is copied with these changes and no others: a first line saying what it keeps; the section heading shortened to name the case; container paths shortened to start at `bin/` or the environment's directory; and a reference to a notes document removed from one line.
+The excerpt is copied with these changes and no others: a first line saying what it keeps; the section heading shortened to name the case; container paths shortened to start at `bin/` or the environment's directory; and a reference to another document removed from one line.
