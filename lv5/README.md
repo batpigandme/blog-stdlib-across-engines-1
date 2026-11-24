@@ -2,7 +2,7 @@
 
 > Captured results from two runs, not regenerated. `probe.js` is the probe program's source, an input like the driver.
 
-[Constellation/iv](https://github.com/Constellation/iv)'s lv5, an ES5 engine in C++, built from source on a Claude Code Cloud x86_64 VM on 23 November 2026, and built again from a fresh clone on 24 November. It builds both times, and its output on both digest bundles is the reference digest bit for bit.
+[Constellation/iv](https://github.com/Constellation/iv)'s lv5, an ES5 engine in C++, built from source on a Cloud x86_64 VM on 23 November 2026, and built again from a fresh clone on 24 November. It builds both times, and its output on both digest bundles is the reference digest bit for bit.
 
 ## Claim
 
