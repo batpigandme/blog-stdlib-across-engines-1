@@ -1,0 +1,232 @@
+# package-tests.sh 2026-11-24T04:00:39-0700; Darwin 25.6.0 arm64
+# stdlib b64fd0cc2749bd6937d9ce55ec4555bad1d41e68 at ~/stdlib; uncommitted changes there before: 0
+# node v24.22.3
+# 7d921ace11de4766  out/source-natural.js
+# packages: 53
+
+package                                              file                   as is (pass fail)  forced (pass fail) verdict
+@stdlib/array/float64                                test.copy_within.js    62 0 (exit 0)      - 0 (exit 1)       CHANGED
+        not ok 3 has property
+            operator: equal
+            expected: true
+            actual:   false
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/array/float64/test/test.copy_within.js:39:4)
+        not ok 4 has method
+            operator: equal
+            expected: true
+@stdlib/array/float64                                test.js                5 0 (exit 0)       4 0 (exit 0)       CHANGED
+@stdlib/array/float64                                test.polyfill.js       3 0 (exit 0)       2 1 (exit 1)       CHANGED
+        not ok 3 throws an error
+            operator: throws
+            expected: |-
+              [Function: Error]
+            actual: |-
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/array/float64/test/test.polyfill.js:36:4)
+@stdlib/array/uint16                                 test.copy_within.js    62 0 (exit 0)      - 0 (exit 1)       CHANGED
+        not ok 3 has property
+            operator: equal
+            expected: true
+            actual:   false
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/array/uint16/test/test.copy_within.js:39:4)
+        not ok 4 has method
+            operator: equal
+            expected: true
+@stdlib/array/uint16                                 test.js                5 0 (exit 0)       4 0 (exit 0)       CHANGED
+@stdlib/array/uint16                                 test.polyfill.js       3 0 (exit 0)       2 1 (exit 1)       CHANGED
+        not ok 3 throws an error
+            operator: throws
+            expected: |-
+              [Function: Error]
+            actual: |-
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/array/uint16/test/test.polyfill.js:36:4)
+@stdlib/array/uint32                                 test.copy_within.js    62 0 (exit 0)      - 0 (exit 1)       CHANGED
+        not ok 3 has property
+            operator: equal
+            expected: true
+            actual:   false
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/array/uint32/test/test.copy_within.js:39:4)
+        not ok 4 has method
+            operator: equal
+            expected: true
+@stdlib/array/uint32                                 test.js                5 0 (exit 0)       4 0 (exit 0)       CHANGED
+@stdlib/array/uint32                                 test.polyfill.js       3 0 (exit 0)       2 1 (exit 1)       CHANGED
+        not ok 3 throws an error
+            operator: throws
+            expected: |-
+              [Function: Error]
+            actual: |-
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/array/uint32/test/test.polyfill.js:36:4)
+@stdlib/array/uint8                                  test.copy_within.js    62 0 (exit 0)      - 0 (exit 1)       CHANGED
+        not ok 3 has property
+            operator: equal
+            expected: true
+            actual:   false
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/array/uint8/test/test.copy_within.js:39:4)
+        not ok 4 has method
+            operator: equal
+            expected: true
+@stdlib/array/uint8                                  test.js                5 0 (exit 0)       4 0 (exit 0)       CHANGED
+@stdlib/array/uint8                                  test.polyfill.js       3 0 (exit 0)       2 1 (exit 1)       CHANGED
+        not ok 3 throws an error
+            operator: throws
+            expected: |-
+              [Function: Error]
+            actual: |-
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/array/uint8/test/test.polyfill.js:36:4)
+@stdlib/assert/has-float64array-support              test.cli.js            11 0 (exit 0)      11 0 (exit 0)      same
+@stdlib/assert/has-float64array-support              test.js                11 0 (exit 0)      9 2 (exit 1)       CHANGED
+        not ok 4 detection result is `true`
+            operator: equal
+            expected: true
+            actual:   false
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/assert/has-float64array-support/test/test.js:50:5)
+        not ok 6 detection result is `true`
+            operator: equal
+            expected: true
+@stdlib/assert/has-own-property                      test.js                13 0 (exit 0)      13 0 (exit 0)      same
+@stdlib/assert/has-symbol-support                    test.cli.js            11 0 (exit 0)      11 0 (exit 0)      same
+@stdlib/assert/has-symbol-support                    test.js                5 0 (exit 0)       5 0 (exit 0)       same
+@stdlib/assert/has-tostringtag-support               test.cli.js            11 0 (exit 0)      11 0 (exit 0)      same
+@stdlib/assert/has-tostringtag-support               test.js                6 0 (exit 0)       6 0 (exit 0)       same
+@stdlib/assert/has-uint16array-support               test.cli.js            11 0 (exit 0)      11 0 (exit 0)      same
+@stdlib/assert/has-uint16array-support               test.js                11 0 (exit 0)      9 2 (exit 1)       CHANGED
+        not ok 4 detection result is `true`
+            operator: equal
+            expected: true
+            actual:   false
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/assert/has-uint16array-support/test/test.js:50:5)
+        not ok 6 detection result is `true`
+            operator: equal
+            expected: true
+@stdlib/assert/has-uint32array-support               test.cli.js            11 0 (exit 0)      11 0 (exit 0)      same
+@stdlib/assert/has-uint32array-support               test.js                11 0 (exit 0)      9 2 (exit 1)       CHANGED
+        not ok 4 detection result is `true`
+            operator: equal
+            expected: true
+            actual:   false
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/assert/has-uint32array-support/test/test.js:50:5)
+        not ok 6 detection result is `true`
+            operator: equal
+            expected: true
+@stdlib/assert/has-uint8array-support                test.cli.js            11 0 (exit 0)      11 0 (exit 0)      same
+@stdlib/assert/has-uint8array-support                test.js                11 0 (exit 0)      9 2 (exit 1)       CHANGED
+        not ok 4 detection result is `true`
+            operator: equal
+            expected: true
+            actual:   false
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/assert/has-uint8array-support/test/test.js:50:5)
+        not ok 6 detection result is `true`
+            operator: equal
+            expected: true
+@stdlib/assert/is-float64array                       test.js                20 0 (exit 0)      19 1 (exit 1)      CHANGED
+        not ok 3 returns expected value
+            operator: equal
+            expected: true
+            actual:   false
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/assert/is-float64array/test/test.js:45:4)
+@stdlib/assert/is-little-endian                      test.cli.js            11 0 (exit 0)      11 0 (exit 0)      same
+@stdlib/assert/is-little-endian                      test.js                4 0 (exit 0)       4 0 (exit 0)       same
+@stdlib/assert/is-uint16array                        test.js                20 0 (exit 0)      19 1 (exit 1)      CHANGED
+        not ok 3 returns expected value
+            operator: equal
+            expected: true
+            actual:   false
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/assert/is-uint16array/test/test.js:45:4)
+@stdlib/assert/is-uint32array                        test.js                20 0 (exit 0)      19 1 (exit 1)      CHANGED
+        not ok 3 returns expected value
+            operator: equal
+            expected: true
+            actual:   false
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/assert/is-uint32array/test/test.js:45:4)
+@stdlib/assert/is-uint8array                         test.js                20 0 (exit 0)      19 1 (exit 1)      CHANGED
+        not ok 3 returns expected value
+            operator: equal
+            expected: true
+            actual:   false
+            at: Test.test (~/stdlib/lib/node_modules/@stdlib/assert/is-uint8array/test/test.js:45:4)
+@stdlib/constants/float64/exponent-bias              test.js                3 0 (exit 0)       3 0 (exit 0)       same
+@stdlib/constants/float64/high-word-abs-mask         test.js                3 0 (exit 0)       3 0 (exit 0)       same
+@stdlib/constants/float64/high-word-exponent-mask    test.js                3 0 (exit 0)       3 0 (exit 0)       same
+@stdlib/constants/float64/high-word-sign-mask        test.js                3 0 (exit 0)       3 0 (exit 0)       same
+@stdlib/constants/float64/max-base2-exponent         test.js                3 0 (exit 0)       3 0 (exit 0)       same
+@stdlib/constants/float64/max-base2-exponent-subnormal test.js                3 0 (exit 0)       3 0 (exit 0)       same
+@stdlib/constants/float64/min-base2-exponent-subnormal test.js                3 0 (exit 0)       3 0 (exit 0)       same
+@stdlib/constants/float64/ninf                       test.js                3 0 (exit 0)       3 0 (exit 0)       same
+@stdlib/constants/float64/pinf                       test.js                3 0 (exit 0)       3 0 (exit 0)       same
+@stdlib/constants/float64/smallest-normal            test.js                3 0 (exit 0)       3 0 (exit 0)       same
+@stdlib/constants/uint16/max                         test.js                3 0 (exit 0)       3 0 (exit 0)       same
+@stdlib/constants/uint32/max                         test.js                3 0 (exit 0)       3 0 (exit 0)       same
+@stdlib/constants/uint8/max                          test.js                3 0 (exit 0)       3 0 (exit 0)       same
+@stdlib/math/base/assert/is-infinite                 test.js                15 0 (exit 0)      15 0 (exit 0)      same
+@stdlib/math/base/assert/is-nan                      test.js                13 0 (exit 0)      13 0 (exit 0)      same
+@stdlib/math/base/special/abs                        test.abs.js            10 0 (exit 0)      10 0 (exit 0)      same
+@stdlib/math/base/special/abs                        test.high.js           4 0 (exit 0)       4 0 (exit 0)       same
+@stdlib/math/base/special/abs                        test.js                10 0 (exit 0)      10 0 (exit 0)      same
+@stdlib/math/base/special/ceil                       test.js                10 0 (exit 0)      10 0 (exit 0)      same
+@stdlib/math/base/special/copysign                   test.js                5019 0 (exit 0)    5019 0 (exit 0)    same
+@stdlib/math/base/special/erf                        test.js                6007 0 (exit 0)    - 0 (exit 1)       CHANGED
+        			throw new TypeError( 'invalid argument. First argument must be a nonnegative integer, an array-like object, or an array buffer created by this polyfill. Value: `' + arg + '`.' );
+        TypeError: invalid argument. First argument must be a nonnegative integer, an array-like object, or an array buffer created by this polyfill. Value: `[object ArrayBuffer]`.
+@stdlib/math/base/special/exp                        test.js                5007 0 (exit 0)    - 0 (exit 1)       CHANGED
+        			throw new TypeError( 'invalid argument. First argument must be a nonnegative integer, an array-like object, or an array buffer created by this polyfill. Value: `' + arg + '`.' );
+        TypeError: invalid argument. First argument must be a nonnegative integer, an array-like object, or an array buffer created by this polyfill. Value: `[object ArrayBuffer]`.
+@stdlib/math/base/special/floor                      test.js                10 0 (exit 0)      10 0 (exit 0)      same
+@stdlib/math/base/special/ldexp                      test.js                4040 0 (exit 0)    4040 0 (exit 0)    same
+@stdlib/math/base/special/trunc                      test.js                9 0 (exit 0)       9 0 (exit 0)       same
+@stdlib/number/ctor                                  test.js                20 0 (exit 0)      20 0 (exit 0)      same
+@stdlib/number/float64/base/exponent                 test.js                10009 0 (exit 0)   - 0 (exit 1)       CHANGED
+        			throw new TypeError( 'invalid argument. First argument must be a nonnegative integer, an array-like object, or an array buffer created by this polyfill. Value: `' + arg + '`.' );
+        TypeError: invalid argument. First argument must be a nonnegative integer, an array-like object, or an array buffer created by this polyfill. Value: `[object ArrayBuffer]`.
+@stdlib/number/float64/base/from-words               test.indices.js        8 0 (exit 0)       8 0 (exit 0)       same
+@stdlib/number/float64/base/from-words               test.js                43 0 (exit 0)      43 0 (exit 0)      same
+@stdlib/number/float64/base/get-high-word            test.high.js           4 0 (exit 0)       4 0 (exit 0)       same
+@stdlib/number/float64/base/get-high-word            test.js                45 0 (exit 0)      45 0 (exit 0)      same
+@stdlib/number/float64/base/normalize                test.assign.js         6019 0 (exit 0)    - 0 (exit 1)       CHANGED
+        			throw new TypeError( 'invalid argument. First argument must be a nonnegative integer, an array-like object, or an array buffer created by this polyfill. Value: `' + arg + '`.' );
+        TypeError: invalid argument. First argument must be a nonnegative integer, an array-like object, or an array buffer created by this polyfill. Value: `[object ArrayBuffer]`.
+@stdlib/number/float64/base/normalize                test.js                4 0 (exit 0)       4 0 (exit 0)       same
+@stdlib/number/float64/base/normalize                test.main.js           4009 0 (exit 0)    - 0 (exit 1)       CHANGED
+        			throw new TypeError( 'invalid argument. First argument must be a nonnegative integer, an array-like object, or an array buffer created by this polyfill. Value: `' + arg + '`.' );
+        TypeError: invalid argument. First argument must be a nonnegative integer, an array-like object, or an array buffer created by this polyfill. Value: `[object ArrayBuffer]`.
+@stdlib/number/float64/base/set-low-word             test.js                746 0 (exit 0)     - 0 (exit 1)       CHANGED
+        			throw new TypeError( 'invalid argument. First argument must be a nonnegative integer, an array-like object, or an array buffer created by this polyfill. Value: `' + arg + '`.' );
+        TypeError: invalid argument. First argument must be a nonnegative integer, an array-like object, or an array buffer created by this polyfill. Value: `[object ArrayBuffer]`.
+@stdlib/number/float64/base/set-low-word             test.low.js            4 0 (exit 0)       4 0 (exit 0)       same
+@stdlib/number/float64/base/to-words                 test.assign.js         107 0 (exit 0)     107 0 (exit 0)     same
+@stdlib/number/float64/base/to-words                 test.indices.js        8 0 (exit 0)       8 0 (exit 0)       same
+@stdlib/number/float64/base/to-words                 test.js                4 0 (exit 0)       4 0 (exit 0)       same
+@stdlib/number/float64/base/to-words                 test.main.js           50 0 (exit 0)      50 0 (exit 0)      same
+@stdlib/string/base/format-interpolate               test.format_double.js  8 0 (exit 0)       8 0 (exit 0)       same
+@stdlib/string/base/format-interpolate               test.format_integer.js 14 0 (exit 0)      14 0 (exit 0)      same
+@stdlib/string/base/format-interpolate               test.js                155 0 (exit 0)     155 0 (exit 0)     same
+@stdlib/string/base/format-interpolate               test.space_pad.js      9 0 (exit 0)       9 0 (exit 0)       same
+@stdlib/string/base/format-interpolate               test.zero_pad.js       6 0 (exit 0)       6 0 (exit 0)       same
+@stdlib/string/base/format-tokenize                  test.js                19 0 (exit 0)      19 0 (exit 0)      same
+@stdlib/string/format                                test.js                142 0 (exit 0)     142 0 (exit 0)     same
+@stdlib/symbol/ctor                                  test.js                20 0 (exit 0)      20 0 (exit 0)      same
+@stdlib/utils/define-nonenumerable-read-only-property test.js                7 0 (exit 0)       7 0 (exit 0)       same
+@stdlib/utils/define-property                        test.has_support.js    7 0 (exit 0)       7 0 (exit 0)       same
+@stdlib/utils/define-property                        test.js                5 0 (exit 0)       5 0 (exit 0)       same
+@stdlib/utils/define-property                        test.polyfill.js       27 0 (exit 0)      27 0 (exit 0)      same
+@stdlib/utils/native-class                           test.js                4 0 (exit 0)       4 0 (exit 0)       same
+@stdlib/utils/native-class                           test.main.js           43 0 (exit 0)      38 5 (exit 1)      CHANGED
+        ok 21 returns [object Error] when provided Error
+        ok 22 returns [object Error] when provided TypeError
+        ok 23 returns [object Error] when provided SyntaxError
+        ok 24 returns [object Error] when provided URIError
+        ok 25 returns [object Error] when provided EvalError
+        ok 26 returns [object Error] when provided ReferenceError
+        ok 27 returns [object Error] when provided RangeError
+        not ok 29 returns [object Uint8Array] when provided [object Object]
+@stdlib/utils/native-class                           test.polyfill.js       49 0 (exit 0)      44 5 (exit 1)      CHANGED
+        ok 21 returns [object Error] when provided Error
+        ok 22 returns [object Error] when provided TypeError
+        ok 23 returns [object Error] when provided SyntaxError
+        ok 24 returns [object Error] when provided URIError
+        ok 25 returns [object Error] when provided EvalError
+        ok 26 returns [object Error] when provided ReferenceError
+        ok 27 returns [object Error] when provided RangeError
+        not ok 29 returns [object Uint8Array] when provided [object Object]
+
+# test files run: 86; changed by forcing the polyfills: 28
+# stdlib uncommitted changes after: 0

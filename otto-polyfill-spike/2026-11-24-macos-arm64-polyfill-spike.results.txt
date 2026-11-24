@@ -1,0 +1,250 @@
+# run.sh 2026-11-24T04:00:23-0700; Darwin 25.6.0 arm64; macOS 26.7.3 (25G342)
+# stdlib b64fd0cc2749bd6937d9ce55ec4555bad1d41e68 at ~/stdlib; uncommitted changes there: 0
+# node v24.22.3 V8 13.6.233.17-node.63
+# otto: ~/go/bin/otto, sha256 412179fb71d97a66a272dbf164f27e126df8d219c0fc1b848cbc02ad28577b17
+#   ~/go/bin/otto: go1.27.4
+#   	path	github.com/robertkrimen/otto/otto
+#   	mod	github.com/robertkrimen/otto	v0.5.1	h1:avDI4ToRk8k1hppLdYFTuuzND41n37vPGJU7547dGf0=
+# spike files:
+#   8fa0f8012c3c74f6   160 lines  polyfills/buffer.js
+#   d7f11c69ad92b569    95 lines  polyfills/float64.js
+#   163396e6f705c7a9    73 lines  polyfills/uint16.js
+#   670c11b2c8274a47    75 lines  polyfills/uint32.js
+#   18b50272a0162897    72 lines  polyfills/uint8.js
+#   6e1881ffb260385d   125 lines  polyfills/base/float64_to_words.js
+#   2d7c1b5c79cde2cd    70 lines  polyfills/base/pow2.js
+#   4fefbc3983660585   347 lines  polyfills/base/typed_array.js
+#   213dc8073ade2210    64 lines  polyfills/base/words_to_float64.js
+#   1dd53b0ec19f4b66    20 lines  force/no_support.js
+#   4a37b56c3453ffa4    44 lines  entry.js
+#   2e901e06c863d7c2   163 lines  build.js
+#   31780ab90caeea2c    40 lines  test/force.js
+#   2d02a0584df57d1b    42 lines  test/otto-probes.js
+#   a3e7cc4ceb249f48   214 lines  test/selftest.js
+
+== 1. build
+# esbuild 0.25.10; node v24.22.3
+# stdlib source: ~/stdlib
+cdcb845032b7da56c9f99e24033676acb1d26bcbd5e4e2355e703967d163536f  107034 bytes  out/npm-natural.js  swapped: float64,uint16,uint32,uint8  forced: none  @stdlib packages: 53
+d7e9a70d4dd88926f67a42115283ee5970b746023ca4bc832ae220a66c6f1893  88590 bytes  out/npm-forced.js  swapped: float64,uint16,uint32,uint8  forced: float64array,uint16array,uint32array,uint8array  @stdlib packages: 37
+7d921ace11de476641a651c385a4fda9d992825a294e5f6907ece3cba3dc684f  108600 bytes  out/source-natural.js  swapped: float64,uint16,uint32,uint8  forced: none  @stdlib packages: 53
+7cce7c685090cde6e876ab5e7a29d294408e839cfa13b9f9f3f06ae529f3e2b3  89670 bytes  out/source-forced.js  swapped: float64,uint16,uint32,uint8  forced: float64array,uint16array,uint32array,uint8array  @stdlib packages: 37
+6b68006a22c68b0c6569003b48682c6c468d9924e9812483a18269f25a6aec03  89361 bytes  out/printer-npm-stubs.js  swapped: none  forced: none  @stdlib packages: 53
+66f1c6defb5553c6afb11da6f95cfb6ab556a9b41cea7e90ae8969dfa0d298d1  103527 bytes  out/printer-npm-natural.js  swapped: float64,uint16,uint32,uint8  forced: none  @stdlib packages: 53
+490b3f6e0a94321afea9df0d205ac0bbcc52f632d58ea20d9705fbdd3a65f224  23599 bytes  out/selftest.js  swapped: none  forced: none  @stdlib packages: 0
+
+== 2. the failure: the otto printer from ../otto-elk, with stdlib's stubs untouched, on otto
+out/printer-npm-stubs.js sha256 6b68006a22c68b0c6569003b48682c6c468d9924e9812483a18269f25a6aec03
+exit 64
+   Error: not implemented
+       at polyfill (<anonymous>:1420:19)
+       at isLittleEndian (<anonymous>:1466:26)
+       at <anonymous>:1471:14
+       at <anonymous>:1480:30
+       at <anonymous>:1489:28
+       at <anonymous>:1514:21
+
+== 3. the polyfills' self-test
+-- Node.js, the files as they are
+native sweep: 200000 bit patterns, 0 mismatches
+selftest pass 73 fail 0
+exit 0
+-- Node.js, bundled
+native sweep: 200000 bit patterns, 0 mismatches
+selftest pass 73 fail 0
+exit 0
+-- otto, bundled
+FAIL name
+FAIL constructor and its name
+native sweep: skipped, this engine has no typed arrays
+selftest pass 70 fail 2
+exit 0
+
+== 4. the same printer, bundled with the polyfills, on otto
+loaded
+erf 0 0
+erf 0.1 0.1124629160182849
+erf 0.5 0.5204998778130465
+erf 1 0.8427007929497149
+erf -1.5 -0.9661051464753108
+erf 2 0.9953222650189527
+erf 3 0.9999779095030014
+erf 6 1
+cases 8
+exit 0
+-- Node.js, the same bundle
+loaded
+erf 0 0
+erf 0.1 0.1124629160182849
+erf 0.5 0.5204998778130465
+erf 1 0.8427007929497149
+erf -1.5 -0.9661051464753108
+erf 2 0.9953222650189527
+erf 3 0.9999779095030014
+erf 6 1
+cases 8
+exit 0
+
+== 5. the digest
+reference: bundles/npm.js on Node.js, 4054 lines, 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51 (the recorded reference)
+recorded reference 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51; NaN-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb
+
+-- out/npm-natural.js, sha256 cdcb845032b7da56c9f99e24033676acb1d26bcbd5e4e2355e703967d163536f
+node                               exit 0  4054 lines
+     # instrument: native typed arrays
+     # stdlib Float64Array: native
+     bits      0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51  IDENTICAL to the reference
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+node, typed-array globals removed  exit 0  4054 lines
+     # instrument: the polyfills, installed as globals
+     # stdlib Float64Array: the polyfill
+     bits      d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544  DIFFERS
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+     lines that differ from the reference: 1
+       < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+       > ldexp 7ff8000000000000 424 7ff8000000000000
+otto, run 1                        exit 0  4054 lines
+     # instrument: the polyfills, installed as globals
+     # stdlib Float64Array: the polyfill
+     bits      d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544  DIFFERS
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+     lines that differ from the reference: 1
+       < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+       > ldexp 7ff8000000000000 424 7ff8000000000000
+otto, run 2                        exit 0  4054 lines
+     # instrument: the polyfills, installed as globals
+     # stdlib Float64Array: the polyfill
+     bits      d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544  DIFFERS
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+     lines that differ from the reference: 1
+       < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+       > ldexp 7ff8000000000000 424 7ff8000000000000
+     otto: repeat identical
+
+-- out/npm-forced.js, sha256 d7e9a70d4dd88926f67a42115283ee5970b746023ca4bc832ae220a66c6f1893
+node                               exit 0  4054 lines
+     # instrument: native typed arrays
+     # stdlib Float64Array: the polyfill
+     bits      0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51  IDENTICAL to the reference
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+node, typed-array globals removed  exit 0  4054 lines
+     # instrument: the polyfills, installed as globals
+     # stdlib Float64Array: the polyfill
+     bits      d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544  DIFFERS
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+     lines that differ from the reference: 1
+       < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+       > ldexp 7ff8000000000000 424 7ff8000000000000
+otto, run 1                        exit 0  4054 lines
+     # instrument: the polyfills, installed as globals
+     # stdlib Float64Array: the polyfill
+     bits      d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544  DIFFERS
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+     lines that differ from the reference: 1
+       < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+       > ldexp 7ff8000000000000 424 7ff8000000000000
+otto, run 2                        exit 0  4054 lines
+     # instrument: the polyfills, installed as globals
+     # stdlib Float64Array: the polyfill
+     bits      d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544  DIFFERS
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+     lines that differ from the reference: 1
+       < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+       > ldexp 7ff8000000000000 424 7ff8000000000000
+     otto: repeat identical
+
+-- out/source-natural.js, sha256 7d921ace11de476641a651c385a4fda9d992825a294e5f6907ece3cba3dc684f
+node                               exit 0  4054 lines
+     # instrument: native typed arrays
+     # stdlib Float64Array: native
+     bits      0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51  IDENTICAL to the reference
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+node, typed-array globals removed  exit 0  4054 lines
+     # instrument: the polyfills, installed as globals
+     # stdlib Float64Array: the polyfill
+     bits      d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544  DIFFERS
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+     lines that differ from the reference: 1
+       < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+       > ldexp 7ff8000000000000 424 7ff8000000000000
+otto, run 1                        exit 0  4054 lines
+     # instrument: the polyfills, installed as globals
+     # stdlib Float64Array: the polyfill
+     bits      d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544  DIFFERS
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+     lines that differ from the reference: 1
+       < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+       > ldexp 7ff8000000000000 424 7ff8000000000000
+otto, run 2                        exit 0  4054 lines
+     # instrument: the polyfills, installed as globals
+     # stdlib Float64Array: the polyfill
+     bits      d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544  DIFFERS
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+     lines that differ from the reference: 1
+       < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+       > ldexp 7ff8000000000000 424 7ff8000000000000
+     otto: repeat identical
+
+-- out/source-forced.js, sha256 7cce7c685090cde6e876ab5e7a29d294408e839cfa13b9f9f3f06ae529f3e2b3
+node                               exit 0  4054 lines
+     # instrument: native typed arrays
+     # stdlib Float64Array: the polyfill
+     bits      0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51  IDENTICAL to the reference
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+node, typed-array globals removed  exit 0  4054 lines
+     # instrument: the polyfills, installed as globals
+     # stdlib Float64Array: the polyfill
+     bits      d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544  DIFFERS
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+     lines that differ from the reference: 1
+       < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+       > ldexp 7ff8000000000000 424 7ff8000000000000
+otto, run 1                        exit 0  4054 lines
+     # instrument: the polyfills, installed as globals
+     # stdlib Float64Array: the polyfill
+     bits      d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544  DIFFERS
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+     lines that differ from the reference: 1
+       < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+       > ldexp 7ff8000000000000 424 7ff8000000000000
+otto, run 2                        exit 0  4054 lines
+     # instrument: the polyfills, installed as globals
+     # stdlib Float64Array: the polyfill
+     bits      d89e89a8c686d15446d1c951d2ece7c49bf77c8b5dfe453d4138478aefd66544  DIFFERS
+     nan-equal c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb  IDENTICAL to the reference
+     lines that differ from the reference: 1
+       < ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7
+       > ldexp 7ff8000000000000 424 7ff8000000000000
+     otto: repeat identical
+
+== 6. what otto has, and what a function's name is there (test/otto-probes.js, no stdlib)
+-- otto
+accessor 1 1 1
+proto accessor 6 9 false
+ints 65533 4294967295 1 222
+pow Infinity -Infinity 1e-323 0 Infinity 1.1125369292536007e-308
+typeof undefined undefined function function function
+toString16 ffffffff 0
+name: string "Foo" true {"configurable":false,"enumerable":false,"value":"Foo","writable":false}
+ctor name: "Foo" true
+define threw: Object.DefineOwnProperty: property not configurable or writeable and descriptor not the same
+other static ok 2
+toString: function Foo() {}
+Object.prototype.toString: [object Object]
+exit 0
+-- Node.js
+accessor 1 1 1
+proto accessor 6 9 false
+ints 65533 4294967295 1 222
+pow Infinity -Infinity 1e-323 0 Infinity 1.1125369292536007e-308
+typeof function function function function function
+toString16 ffffffff 0
+name: string "Foo" true {"value":"Foo","writable":false,"enumerable":false,"configurable":true}
+ctor name: "Foo" true
+defined Bar
+other static ok 2
+toString: function Foo() {}
+Object.prototype.toString: [object Object]
+exit 0
+
+# stdlib uncommitted changes after: 0

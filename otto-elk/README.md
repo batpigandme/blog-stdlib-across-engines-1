@@ -39,7 +39,7 @@ Error: not implemented
     at isLittleEndian (<anonymous>:1466:26)
 ```
 
-That's stdlib's `Uint16Array` polyfill, which throws "not implemented" ([`array/uint16/lib/polyfill.js` at `b64fd0cc`](https://github.com/stdlib-js/stdlib/blob/b64fd0cc2749bd6937d9ce55ec4555bad1d41e68/lib/node_modules/%40stdlib/array/uint16/lib/polyfill.js#L22-L31)). `@stdlib/assert-is-little-endian` reaches it when `erf` loads, on an engine without `Uint16Array`. stdlib fails on load there, before `erf` computes anything. On Node.js 24.22.3 the same bundle prints all eight results.
+That's stdlib's `Uint16Array` polyfill, which throws "not implemented" ([`array/uint16/lib/polyfill.js` at `b64fd0cc`](https://github.com/stdlib-js/stdlib/blob/b64fd0cc2749bd6937d9ce55ec4555bad1d41e68/lib/node_modules/%40stdlib/array/uint16/lib/polyfill.js#L22-L31)). `@stdlib/assert-is-little-endian` reaches it when `erf` loads, on an engine without `Uint16Array`. stdlib fails on load there, before `erf` computes anything. On Node.js 24.22.3 the same bundle prints all eight results. A sketch of ES5 typed-array polyfills that let it load on otto is in [`../otto-polyfill-spike/`](../otto-polyfill-spike/).
 
 ## Files
 
