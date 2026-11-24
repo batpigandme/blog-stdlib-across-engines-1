@@ -8,7 +8,8 @@ Each folder's README says what was run, on what, and when, and what the committe
 
 ## How to use this repository
 
-- **The claim folders hold captured results,** copied from earlier runs with machine paths removed, and have no scripts. Each README lists any other change, and marks any cut in place.
+- **Most claim folders hold captured results,** copied from earlier runs with machine paths removed, and have no scripts. Each README lists any other change, and marks any cut in place.
+- **[`otto-polyfill-spike/`](./otto-polyfill-spike/) and [`mqjs-guard-spike/`](./mqjs-guard-spike/) are sketches with scripts,** not stdlib code: each tries an approach, with the scripts to run it again and a transcript of a fresh run.
 - **[`page/`](./page/) is the one thing to run.** It runs stdlib's `erf` and `ldexp` in your browser, on 4,053 inputs, and shows the output's digest beside the reference.
 - **[`bundles/`](./bundles/) holds the inputs** every digest refers to, byte for byte.
 - **[`ENGINES.md`](./ENGINES.md)** lists every engine, runtime, and tool, with its version, host, and how it got there.
@@ -26,7 +27,9 @@ A digest is the SHA-256 of a run's output lines, so equal digests mean equal bit
 | Integer work | stdlib's 8- and 16-bit paths giving the same output on every engine that loads them | [`integer-paths/`](./integer-paths/) |
 | otto and Elk | which programs run on each, and stdlib failing to load on otto | [`otto-elk/`](./otto-elk/) |
 | Engines that can't run stdlib | Quanta and Porffor, each with its error | [`cant-run/`](./cant-run/) |
-| scriptc and stdlib's own gap | scriptc 0.4.16 stopping on stdlib's `__defineGetter__` read, and the digest bit for bit with those reads moved into the fallback's function | [`scriptc/`](./scriptc/) |
+| otto paragraph and [^spike] | ES5 typed-array polyfills, swapped in at bundle time, with `erf` and `ldexp` loading on otto and giving the reference's digest NaN-equal | [`otto-polyfill-spike/`](./otto-polyfill-spike/) |
+| Gaps that are stdlib's own (beside issue 16798) | two patches to stdlib that let its strided dispatch path load on MicroQuickJS, where `integer-paths/` used engine shims | [`mqjs-guard-spike/`](./mqjs-guard-spike/) |
+| Engines that stop early (scriptc) | scriptc 0.4.16 stopping on stdlib's `__defineGetter__` read, which is a deliberate guard, and the digest bit for bit with those reads moved into the fallback's function | [`scriptc/`](./scriptc/) |
 
 [`setup/`](./setup/) records how the engines run on 22 November 2026 got onto the machine.
 

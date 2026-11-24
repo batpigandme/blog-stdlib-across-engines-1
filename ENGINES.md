@@ -21,6 +21,7 @@ The macOS arm64 run of 21 October also ran most of the October engines, some at 
 | engine262 | 0.0.1 at `2d7d8d98` | Cloud x86_64, 21 Oct 2026 | npm, on Node.js 22 | `digest/` |
 | Boa | 0.22.0 | Cloud x86_64, 21 Oct 2026 | release binary | `digest/` |
 | MicroQuickJS | `6d4d7eb`, two builds | macOS arm64, 21 Oct 2026 | built from source | `digest/` |
+| MicroQuickJS | [`6d4d7eb6b990`](https://github.com/bellard/mquickjs/tree/6d4d7eb6b99011d5aab6e88a9b99e8fd4d86c6e9), one build | macOS arm64, built 21 Oct 2026, run 24 Nov 2026 | built from source | `mqjs-guard-spike/` |
 | Nova | `d85a2f8d` | Cloud x86_64, 2 Nov 2026 | the [JavaScript engines zoo](https://github.com/ivankra/javascript-zoo/releases/tag/20260303), release `20260303` | `digest/` |
 | NJS | 0.9.6, `aa8ff7d0` | Cloud x86_64, 2 Nov 2026 | the zoo, `20260303` | `digest/` |
 | LibJS | `e1ba577a` | Cloud x86_64, 2 Nov 2026 | the zoo, `20260303` | `digest/` |
@@ -28,7 +29,7 @@ The macOS arm64 run of 21 October also ran most of the October engines, some at 
 | Rhino | 2.0.0-SNAPSHOT at `7386aa0`, on OpenJDK 25.0.4.1 | Cloud x86_64, 2 Nov 2026 | the zoo, `20260303` | `digest/`, `rhino/` |
 | Rhino | [1.9.2](https://repo1.maven.org/maven2/org/mozilla/rhino-all/1.9.2/), on OpenJDK 25.0.2 | OrbStack aarch64, 22 Nov 2026 | Maven Central, checked against its sums | `rhino/`, `setup/` |
 | goja | `622d1007`, Go 1.26.10 | Cloud x86_64, 2 Nov 2026 | `go install` | `digest/` |
-| otto | [v0.5.1](https://github.com/robertkrimen/otto/tree/v0.5.1), Go 1.24.7; Go 1.27.4 on macOS | Cloud x86_64, 2 Nov 2026; OrbStack aarch64, 22 Nov 2026; macOS arm64, 23 Nov 2026 | `go install` | `otto-elk/`, `setup/` |
+| otto | [v0.5.1](https://github.com/robertkrimen/otto/tree/v0.5.1), Go 1.24.7; Go 1.27.4 on macOS | Cloud x86_64, 2 Nov 2026; OrbStack aarch64, 22 Nov 2026; macOS arm64, 23 and 24 Nov 2026 | `go install` | `otto-elk/`, `otto-polyfill-spike/`, `setup/` |
 | Elk | [`a9bb856`](https://github.com/cesanta/elk/tree/a9bb85619c5cddf49dfa8bdf529770fc9943a7fd) | Cloud x86_64, 2 Nov 2026; OrbStack aarch64, 22 Nov 2026 | the zoo, `20260303`, checked against the zoo's hash | `otto-elk/`, `setup/` |
 | Quanta | `767a49f` | Cloud x86_64, 2 Nov 2026 | the zoo, `20260303` | `cant-run/` |
 | Porffor | 0.0.0-alpha.19 | Cloud x86_64, 2 Nov 2026; OrbStack aarch64, 3 Nov 2026 | npm | `cant-run/` |
@@ -42,6 +43,7 @@ The macOS arm64 run of 21 October also ran most of the October engines, some at 
 | Node.js | 22.22.1, 24.19.0, 26.7.0, 26.12.0 | macOS arm64, 21 Oct 2026 | nvm | `digest/` |
 | Node.js | 24.19.0, V8 13.6.233.17-node.51: the reference | Cloud x86_64, 2 Nov 2026 | nvm | `bundles/`, `digest/` |
 | Node.js | 20.20.2, 22.23.1, 24.22.3, 26.13.1, 27.0.0-alpha.0.1.1 | macOS arm64 and Cloud x86_64, 22 Nov 2026 | nvm 0.41.0; on Cloud, nvm 0.40.1 for the four stable releases | `node-lines/` |
+| Node.js | 24.22.3, V8 13.6.233.17-node.63 | macOS arm64, 24 Nov 2026 | nvm | `otto-polyfill-spike/`, `mqjs-guard-spike/` |
 | Bare | 1.36.0, V8 14.8.178.31 | Cloud x86_64 and macOS arm64, 21 Oct 2026 | npm | `digest/` |
 | txiki.js | 26.6.0, QuickJS-ng 0.15.1 | Cloud x86_64, 21 Oct 2026 | built from source | `digest/` |
 
@@ -49,6 +51,6 @@ The macOS arm64 run of 21 October also ran most of the October engines, some at 
 
 | Tool | Version | Used for |
 | --- | --- | --- |
-| esbuild | [0.25.10](https://github.com/evanw/esbuild/releases/tag/v0.25.10) | building both bundles and the otto printer |
+| esbuild | [0.25.10](https://github.com/evanw/esbuild/releases/tag/v0.25.10) | building the bundles, the otto printer, and the two spikes' bundles |
 | pixi | [0.83.0](https://github.com/prefix-dev/pixi/releases/tag/v0.83.0) | the OrbStack container's Go and OpenJDK |
 | Docker image | `ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852` | every OrbStack run |
