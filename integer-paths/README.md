@@ -29,6 +29,8 @@ Each binary ran the bundle with its output on standard output, which was hashed 
 | MicroQuickJS, three builds | doesn't load: `TypeError: cannot read property 'call' of undefined` | shims for `Object.prototype.propertyIsEnumerable` and `isPrototypeOf`, which it lacks and the strided dispatch path calls | `2117a64ea336`, all three |
 | JerryScript 3.0.0 | exit 10, out of memory at its default heap | N = 1,024 instead of 4,096 | `918752e38eeb`, the same as Node.js 26.7.0 at N = 1,024 |
 
+**The same two gaps, closed in stdlib instead:** [`../mqjs-guard-spike/`](../mqjs-guard-spike/) is a sketch of two patches to stdlib's own files that let MicroQuickJS load the strided dispatch path with neither shim, and give the same output.
+
 **`Math.imul` removed:** every engine has `Math.imul`, so stdlib's polyfill ran nowhere by default. With `Math.imul` removed before the bundle loads, Node.js 26.7.0 and Duktape 2.7.0 both gave `cdc6dd7c3eef`, which differs from `2117a64ea336` only in the line that reports which `imul` ran.
 
 **Unbundled:** Node.js 22.22.0, 24.19.0, and 26.7.0 gave `2117a64ea336`, the same as the bundle. Bare 1.36.0 stopped with `MODULE_NOT_FOUND: Cannot find module 'path'`. txiki.js and the engine shells weren't run unbundled, since they can't resolve `require`.

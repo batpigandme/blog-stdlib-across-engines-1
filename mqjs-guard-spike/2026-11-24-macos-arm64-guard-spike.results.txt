@@ -1,0 +1,121 @@
+# run.sh 2026-11-24T04:03:39-0700; Darwin 25.6.0 arm64; macOS 26.7.3 (25G342)
+# stdlib b64fd0cc2749bd6937d9ce55ec4555bad1d41e68 at ~/stdlib; uncommitted changes there: 0
+# node v24.22.3 V8 13.6.233.17-node.63
+# esbuild 0.25.10
+# mqjs sha256 fbadf343fb224c609eda57a1d50e223b7825cbcccfa2afa5243f8d46d19f2734, source tree at 6d4d7eb6b99011d5aab6e88a9b99e8fd4d86c6e9
+# folder files:
+#   bde36ba6c17c2b54    96 lines  patches/1-is-enumerable-property.patch
+#   a4a23f34d6fd03d5    27 lines  patches/1b-is-plain-object.patch
+#   ae84575e29d90c1d     1 lines  shims/getownpropertynames.js
+#   fa65c1fbab88c578     1 lines  shims/no-property-is-enumerable.js
+#   b4c78c226d0104df   139 lines  build.js
+#   20646c2c14d885ae    94 lines  overlay.js
+#   e85e1efe41dc7ff8    39 lines  test/is-enumerable-property.js
+#   39aff825d672c0b4    21 lines  test/mqjs-probes.js
+#   87031ab3e1809ac0    68 lines  test/patched-require.js
+#   e3d33927f6e53912   140 lines  drivers/driver.js
+#   81fec8ece2314af5    17 lines  drivers/ops-add-uint16.js
+#   43b953599632a118    64 lines  drivers/oracle.py
+
+== 1. the patches: do they apply to stdlib at b64fd0cc (git apply --check, which writes nothing), and their size
+patches/1-is-enumerable-property.patch   applies
+    +8   -0   lib/node_modules/@stdlib/assert/is-enumerable-property/lib/native.js
+    +69  -0   lib/node_modules/@stdlib/assert/is-enumerable-property/lib/polyfill.js
+    lines of code changed, comments and blank lines left out: +18 -0
+patches/1b-is-plain-object.patch         applies
+    +8   -6   lib/node_modules/@stdlib/assert/is-plain-object/lib/main.js
+    lines of code changed, comments and blank lines left out: +5 -3
+
+== 2. stdlib's own ESLint on each patched file (stdin, named as its stdlib path; nothing written), the original as control
+-- lib/node_modules/@stdlib/assert/is-enumerable-property/lib/native.js, as 1-is-enumerable-property.patch leaves it
+
+~/stdlib/lib/node_modules/@stdlib/assert/is-enumerable-property/lib/native.js
+  23:16  error  cannot resolve module: "~/stdlib/lib/node_modules/@stdlib/assert/is-enumerable-property/lib/polyfill.js"  stdlib/require-file-extensions
+
+✖ 1 problem (1 error, 0 warnings)
+
+   eslint exit 1
+   original: eslint exit 0
+-- lib/node_modules/@stdlib/assert/is-enumerable-property/lib/polyfill.js, as 1-is-enumerable-property.patch leaves it
+   eslint exit 0
+   original: none (the patch creates this file)
+-- lib/node_modules/@stdlib/assert/is-plain-object/lib/main.js, as 1b-is-plain-object.patch leaves it
+   eslint exit 0
+   original: eslint exit 0
+(native.js's one error, if any, is stdlib/require-file-extensions failing to find ./polyfill.js on disk: the file exists only in the patch, which linting from stdin can't show it)
+
+== 3. MicroQuickJS: the built-ins in question
+typeof propertyIsEnumerable undefined
+typeof isPrototypeOf undefined
+typeof Object.getOwnPropertyNames undefined
+typeof Object.getOwnPropertyDescriptor undefined
+typeof Object( "beep" ) string
+hasOwnProperty.call( "beep", "0" ) false
+Object.keys after defineProperty( o, "x", { enumerable: false } ) ["x","y"]
+for-in on the same object ["x","y"]
+exit 0
+
+== 4. MicroQuickJS: the integer-paths driver, from stdlib source, with the getOwnPropertyNames shim
+e2e92b080e2b649f  528150 bytes  ip-ref.js  patched: none
+Node.js, unpatched: exit 0, 23 lines, 2117a64ea336 (= 2117a64ea336, the digest ../integer-paths records)
+oracle: 15 of 15 lines correct
+oracle control ok: it rejects a changed value
+
+e2e92b080e2b649f  528150 bytes  ip-none.js  patched: none
+mqjs, patches none  exit 1, 4 lines, 1dbc366af6e7; differs from Node.js; first error line:
+     TypeError: cannot read property 'call' of undefined
+
+548734a7618e3e8f  529086 bytes  ip-1.js  patched: assert-is-enumerable-property/lib/native.js, assert-is-enumerable-property/lib/polyfill.js
+mqjs, patches 1     exit 1, 4 lines, e1d46498304e; differs from Node.js; first error line:
+     TypeError: invalid argument. Options argument must be an object. Value: `[object Object]`.
+
+f807ae207de96ed1  528150 bytes  ip-1b.js  patched: assert-is-plain-object/lib/main.js
+mqjs, patches 1b    exit 1, 4 lines, e5c22823f82c; differs from Node.js; first error line:
+     TypeError: cannot read property 'call' of undefined
+
+388dd3708b68de6e  529086 bytes  ip-1+1b.js  patched: assert-is-enumerable-property/lib/native.js, assert-is-enumerable-property/lib/polyfill.js, assert-is-plain-object/lib/main.js
+mqjs, patches 1+1b  exit 0, 23 lines, 2117a64ea336; IDENTICAL to Node.js
+     oracle: 15 of 15 lines correct
+
+-- patches 1+1b without the getOwnPropertyNames shim, on mqjs, then on Node.js with the built-in deleted (for a stack)
+24b7b84820d1834d  528986 bytes  ip-noshim.js  patched: assert-is-enumerable-property/lib/native.js, assert-is-enumerable-property/lib/polyfill.js, assert-is-plain-object/lib/main.js
+TypeError: not a function
+exit 1
+733d648a2e2580eb  529021 bytes  ip-delgopn.js  patched: assert-is-enumerable-property/lib/native.js, assert-is-enumerable-property/lib/polyfill.js, assert-is-plain-object/lib/main.js
+TypeError: __getOwnPropNames is not a function
+   bundle: (function() {
+   bundle:   var __getOwnPropNames = Object.getOwnPropertyNames;
+   bundle:   var __commonJS = function(cb, mod) {
+   bundle:     return function __require() {
+   bundle:       return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+   bundle:     };
+
+== 5. MicroQuickJS: the ops-add-uint16 driver (one package, the strided dispatch path), unpatched and with 1+1b
+97c833b8bfd1db95  505674 bytes  ops-none.js  patched: none
+6a3fd64fae224838  506610 bytes  ops-1-1b.js  patched: assert-is-enumerable-property/lib/native.js, assert-is-enumerable-property/lib/polyfill.js, assert-is-plain-object/lib/main.js
+Node.js, unpatched: ops.add uint16 553555568 done 
+mqjs, none  exit 1: TypeError: cannot read property 'call' of undefined     at detect (out/ops-none.js:1980:23)     at  (out/ops-none.js:1982:20)     at __require (out/ops-none.js:6:54)   differs
+mqjs, 1-1b  exit 0: ops.add uint16 553555568 done   IDENTICAL to Node.js
+
+== 6. Node.js: patch 1's fallback against the built-in, with the built-in deleted before stdlib loads
+4c7aede1a8b6ab73  51764 bytes  iep.js  patched: assert-is-enumerable-property/lib/native.js, assert-is-enumerable-property/lib/polyfill.js
+built-in deleted: true
+270 cases, 0 disagreements
+exit 0
+-- control, unpatched: the same deletion must stop stdlib loading
+0e2f50815d967431  50180 bytes  iep-unpatched.js  patched: none
+TypeError: Cannot read properties of undefined (reading 'call')
+exit 1
+
+== 7. Node.js: stdlib's own tests for each patched package, from source (test/patched-require.js; nothing written)
+assert/is-enumerable-property  as is                              test.js                    21 pass, 0 fail, exit 0
+assert/is-enumerable-property  1                                  test.js                    21 pass, 0 fail, exit 0
+assert/is-enumerable-property  1, built-in deleted                test.js                    21 pass, 0 fail, exit 0
+assert/is-enumerable-property  none, built-in deleted (control)   test.js                    - pass, 0 fail, exit 1
+         at Object.load [as .js] (test/patched-require.js:59:9)
+assert/is-plain-object         as is                              test.js                    21 pass, 0 fail, exit 0
+assert/is-plain-object         1b                                 test.js                    21 pass, 0 fail, exit 0
+(a "patched file never loaded" line would mean a row ran unpatched code)
+
+== 8. stdlib checkout after the run
+stdlib b64fd0cc2749bd6937d9ce55ec4555bad1d41e68; uncommitted changes there: 0
