@@ -31,17 +31,7 @@ The binary is `iv/lv5/lv5`, 158,435,952 bytes, run as `lv5 file.js`.
 
 ## Probe
 
-[`probe.js`](./probe.js) prints `typeof` of each global, and printed:
-
-```text
-ArrayBuffer: function
-Uint8Array: function
-Uint16Array: function
-Uint32Array: function
-Float64Array: function
-Map: function
-Symbol: function
-```
+[`probe.js`](./probe.js) prints `typeof` of each global. Its output isn't committed here; it will be committed with the repeat run.
 
 ## Digest
 
@@ -49,4 +39,4 @@ Symbol: function
 
 ## Not checked
 
-Repeatability: the run was single. Any driver but this one. Whether lv5's typed arrays and `Symbol` are complete, beyond `typeof`.
+Repeatability: the run was single. Any driver but this one. Whether lv5's typed arrays and `Symbol` are complete, beyond what `probe.js` prints.
