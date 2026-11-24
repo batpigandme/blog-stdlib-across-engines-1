@@ -1,0 +1,7 @@
+ArrayBuffer: function
+Uint8Array: function
+Uint16Array: function
+Uint32Array: function
+Float64Array: function
+Map: function
+Symbol: function

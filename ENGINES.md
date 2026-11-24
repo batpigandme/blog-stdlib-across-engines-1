@@ -34,7 +34,7 @@ The macOS arm64 run of 21 October also ran most of the October engines, some at 
 | Quanta | `767a49f` | Cloud x86_64, 2 Nov 2026 | the zoo, `20260303` | `cant-run/` |
 | Porffor | 0.0.0-alpha.19 | Cloud x86_64, 2 Nov 2026; OrbStack aarch64, 3 Nov 2026 | npm | `cant-run/` |
 | scriptc | 0.4.7; [0.4.16](https://www.npmjs.com/package/scriptc/v/0.4.16), with Apple clang 21.0.0 | Cloud x86_64, 2 Nov 2026; macOS arm64, 23 Nov 2026 | npm | `scriptc/` |
-| lv5 | [`64c3a9c`](https://github.com/Constellation/iv/tree/64c3a9c7c517063f29d90d449180ea8f6f4d946f), GCC 13.3.0 | Cloud x86_64, 23 Nov 2026; one run, repeat pending | built from source, with `-fcommon` | `lv5/` |
+| lv5 | [`64c3a9c`](https://github.com/Constellation/iv/tree/64c3a9c7c517063f29d90d449180ea8f6f4d946f), GCC 13.3.0 | Cloud x86_64, 23 and 24 Nov 2026; built twice, each bundle run twice on the second | built from source, with `-fcommon` | `lv5/` |
 
 ## Runtimes
 

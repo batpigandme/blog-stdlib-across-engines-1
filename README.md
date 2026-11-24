@@ -30,7 +30,7 @@ A digest is the SHA-256 of a run's output lines, so equal digests mean equal bit
 | otto paragraph and [^spike] | ES5 typed-array polyfills, swapped in at bundle time, with `erf` and `ldexp` loading on otto and giving the reference's digest NaN-equal | [`otto-polyfill-spike/`](./otto-polyfill-spike/) |
 | Gaps that are stdlib's own (beside issue 16798) | two patches to stdlib that let its strided dispatch path load on MicroQuickJS, where `integer-paths/` used engine shims | [`mqjs-guard-spike/`](./mqjs-guard-spike/) |
 | Engines that stop early (scriptc) | scriptc 0.4.16 stopping on stdlib's `__defineGetter__` read, which is a deliberate guard, and the digest bit for bit with those reads moved into the fallback's function | [`scriptc/`](./scriptc/) |
-| An older engine (lv5) | lv5, an ES5 engine in C++, built from source at a March 2015 commit and giving the reference digest on `npm.js` bit for bit; one run, repeat pending | [`lv5/`](./lv5/) |
+| An older engine (lv5) | lv5, an ES5 engine in C++, built from source at a March 2015 commit and giving the reference digest on `npm.js` and `source.js` bit for bit, on two builds and two runs of each bundle | [`lv5/`](./lv5/) |
 
 [`setup/`](./setup/) records how the engines run on 22 November 2026 got onto the machine.
 

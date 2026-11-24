@@ -1,0 +1,22 @@
+# lv5 rebuilt at 64c3a9c7c517063f29d90d449180ea8f6f4d946f, 24 November 2026; Linux 6.18.44 x86_64, Ubuntu 24.04
+# GCC 13.3.0, cmake 3.28.3, libgc-dev 1:8.2.6-1build1, subversion 1.14.3; CFLAGS=-fcommon CXXFLAGS=-fcommon; iv not patched
+# lv5 binary: 158,436,728 bytes, sha256 a0a518beffee891ab7ac66533272fe20eb8ba4ad8fa4df4f81eacc48b2ea2ade (built in a new, empty directory)
+# Node.js v24.22.3 from `nvm install 24`, V8 13.6.233.17-node.63, on the same VM
+# bundles/npm.js sha256 4aaee0922ebe97e0...; bundles/source.js sha256 60845e945fa81fad...
+# every run: exit 0, empty stderr, 4054 lines
+reference digest, bit for bit:  0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51
+reference digest, NaN-equal:    c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb
+
+run              bit-for-bit sha256                                                  NaN-equal sha256
+lv5 npm.js 1     0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51  c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb
+lv5 npm.js 2     0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51  c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb
+lv5 source.js 1  0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51  c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb
+lv5 source.js 2  0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51  c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb
+node npm.js 1    0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51  c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb
+node npm.js 2    0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51  c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb
+node source.js 1 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51  c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb
+node source.js 2 0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51  c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb
+
+cmp: lv5 run 1 == lv5 run 2 (both bundles); node run 1 == node run 2 (both bundles); lv5 == node (both bundles); lv5 npm.js run 1 == npm.lv5.output.txt (the 23 November output)
+line 3382 of every lv5 output: ldexp fff797b7ad2f57d7 424 fff797b7ad2f57d7   (signalling NaN kept, as on Node.js)
+probe.js: probe.lv5.output.txt
