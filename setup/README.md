@@ -25,4 +25,4 @@ c: results only.
 
 ## Changes from the runs
 
-A line naming the notes repository's commit removed from the host file; the container's paths shortened to start at `bin/`; and one cut in the setup file, marked in place with `[cut: …]`: the install of two ahead-of-time compilers for a run this repository doesn't include. An earlier attempt at the same setup failed when Docker couldn't create a mount point, and isn't included.
+A line recording a working-tree commit removed from the host file; the container's paths shortened to start at `bin/`; and one cut in the setup file, marked in place with `[cut: …]`: the install of two ahead-of-time compilers for a run this repository doesn't include. An earlier attempt at the same setup failed when Docker couldn't create a mount point, and isn't included.

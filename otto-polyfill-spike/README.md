@@ -42,4 +42,4 @@ The second script reads the bundle the first built. `$STDLIB`, `$OTTO`, and `$NO
 
 ## Files
 
-[`polyfills/`](./polyfills/) holds the polyfills, [`build.js`](./build.js) swaps them in, and [`entry.js`](./entry.js) runs [`../bundles/driver.js`](../bundles/driver.js) unchanged. [`test/`](./test/) holds the self-test, the otto probes, and the runner for stdlib's own tests. The two `.results.txt` files are the transcripts of the commands above, as the scripts printed them.
+[`polyfills/`](./polyfills/) holds the polyfills, [`build.js`](./build.js) swaps them in, and [`entry.js`](./entry.js) runs [`../bundles/driver.js`](../bundles/driver.js) unchanged. [`test/`](./test/) holds the self-test, the otto probes, and the runner for stdlib's own tests. The two `.results.txt` files are the transcripts of the commands above, as the scripts printed them. Since the run, only the first comment line of `test/otto-probes.js` has changed, so that file's hash in the transcript's file list no longer matches.

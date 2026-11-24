@@ -53,4 +53,4 @@ These are differences between two hosts' outputs. The folder doesn't say which v
 
 ## Changes from the runs
 
-The transcripts are copied with these changes and no others: the home directory in binary paths shortened to `~`, and a line naming the notes repository's commit removed from each file.
+The transcripts are copied with these changes and no others: the home directory in binary paths shortened to `~`, and a line recording a working-tree commit removed from each file.

@@ -27,8 +27,8 @@ A digest is the SHA-256 of a run's output lines, so equal digests mean equal bit
 | Integer work | stdlib's 8- and 16-bit paths giving the same output on every engine that loads them | [`integer-paths/`](./integer-paths/) |
 | otto and Elk | which programs run on each, and stdlib failing to load on otto | [`otto-elk/`](./otto-elk/) |
 | Engines that can't run stdlib | Quanta and Porffor, each with its error | [`cant-run/`](./cant-run/) |
-| otto paragraph and [^spike] | ES5 typed-array polyfills, swapped in at bundle time, with `erf` and `ldexp` loading on otto and giving the reference's digest NaN-equal | [`otto-polyfill-spike/`](./otto-polyfill-spike/) |
-| Gaps that are stdlib's own (beside issue 16798) | two patches to stdlib that let its strided dispatch path load on MicroQuickJS, where `integer-paths/` used engine shims | [`mqjs-guard-spike/`](./mqjs-guard-spike/) |
+| Different subsets of the language | ES5 typed-array polyfills, swapped in at bundle time, with `erf` and `ldexp` loading on otto and giving the reference's digest NaN-equal | [`otto-polyfill-spike/`](./otto-polyfill-spike/) |
+| Gaps that are stdlib's own | two patches to stdlib that let its strided dispatch path load on MicroQuickJS, where `integer-paths/` used engine shims | [`mqjs-guard-spike/`](./mqjs-guard-spike/) |
 | Engines that stop early (scriptc) | scriptc 0.4.16 stopping on stdlib's `__defineGetter__` read, which is a deliberate guard, and the digest bit for bit with those reads moved into the fallback's function | [`scriptc/`](./scriptc/) |
 | An older engine (lv5) | lv5, an ES5 engine in C++, built from source at a March 2015 commit and giving the reference digest on `npm.js` and `source.js` bit for bit, on two builds and two runs of each bundle | [`lv5/`](./lv5/) |
 

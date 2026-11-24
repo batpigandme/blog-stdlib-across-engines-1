@@ -1,5 +1,5 @@
-// otto-probes.js -- the two direct probes behind README §4.1 and §4.3. Plain
-// ES5 with no stdlib, run as it is on otto and on Node.js:
+// otto-probes.js -- two direct probes of the engine, with no stdlib. Plain
+// ES5, run as it is on otto and on Node.js:
 //
 //   otto -underscore=false test/otto-probes.js
 //   node test/otto-probes.js
