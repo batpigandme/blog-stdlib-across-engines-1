@@ -2,7 +2,7 @@
 
 > Captured results from earlier runs, not regenerated. This folder has no scripts.
 
-Two engines that couldn't run stdlib's bundle, each for a reason of its own, measured on a Claude Code Cloud x86_64 VM on 2 November 2026. Quanta at `767a49f`: its parser hangs on stdlib's `new ctors[ 'uint16' ]( 1 )`, so the bundle never loads. Porffor 0.0.0-alpha.19, an ahead-of-time compiler: stdlib's `var UINT32_MAX` collides with the `<stdint.h>` macro in the C it generates, reproduced on an OrbStack aarch64 Linux VM on 3 November 2026. Neither is filed upstream. scriptc, which was here, is in [`../scriptc/`](../scriptc/), since the line it stops on is stdlib's own.
+Two engines that couldn't run stdlib's bundle, each for a reason of its own, measured on a Linux x86_64 VM on 2 November 2026. Quanta at `767a49f`: its parser hangs on stdlib's `new ctors[ 'uint16' ]( 1 )`, so the bundle never loads. Porffor 0.0.0-alpha.19, an ahead-of-time compiler: stdlib's `var UINT32_MAX` collides with the `<stdint.h>` macro in the C it generates, reproduced on an OrbStack aarch64 Linux VM on 3 November 2026. Neither is filed upstream. scriptc, which was here, is in [`../scriptc/`](../scriptc/), since the line it stops on is stdlib's own.
 
 ## Tier
 
@@ -10,7 +10,7 @@ c: results only.
 
 ## What was run
 
-On 2 November 2026, on a Claude Code Cloud x86_64 VM, each engine was given both bundles from [`../bundles/`](../bundles/), as in [`../digest/`](../digest/). Their rows and raw outputs are in that folder's November transcript and its outputs archive, so they aren't copied here:
+On 2 November 2026, on a Linux x86_64 VM, each engine was given both bundles from [`../bundles/`](../bundles/), as in [`../digest/`](../digest/). Their rows and raw outputs are in that folder's November transcript and its outputs archive, so they aren't copied here:
 
 - **Quanta,** the JavaScript engines zoo's build at revision `767a49f`, release `20260303`. Rows `quanta`; outputs `npm-quanta.txt` and `source-quanta.txt`, each one line: `[unrun-stdlib-math: timed out after 120 s]`.
 - **Porffor 0.0.0-alpha.19,** from npm, compiling with `porf native`, which generates C and compiles it with GCC 13. Rows `porffor`, and `porffor-run` for its default mode; outputs `npm-porffor.txt` and `npm-porffor-run.txt`, which hold the compiler's errors.

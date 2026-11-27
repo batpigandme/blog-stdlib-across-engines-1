@@ -23,7 +23,7 @@ A digest here is the SHA-256 of a bundle's output lines, each followed by a newl
 - **Bit for bit:** `0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51`
 - **When every NaN counts as NaN,** after `nan-equal.awk`: `c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb`
 
-Both are from [Node.js 24.19.0](https://github.com/nodejs/node/releases/tag/v24.19.0) on a Claude Code Cloud x86_64 VM, on 2 November 2026. One input, a signalling NaN that the driver stores into a `Float64Array`, is the reason for the second: engines encode that NaN their own way, so only the second digest is expected to match everywhere.
+Both are from [Node.js 24.19.0](https://github.com/nodejs/node/releases/tag/v24.19.0) on a Linux x86_64 VM, on 2 November 2026. One input, a signalling NaN that the driver stores into a `Float64Array`, is the reason for the second: engines encode that NaN their own way, so only the second digest is expected to match everywhere.
 
 ## How they were built
 

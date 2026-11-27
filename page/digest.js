@@ -15,7 +15,7 @@
 }( this, function main() {
 	'use strict';
 
-	// The reference: Node.js 24.19.0 on a Claude Code Cloud x86_64 VM, 2 November 2026.
+	// The reference: Node.js 24.19.0 on a Linux x86_64 VM, 2 November 2026.
 	var REFERENCE = {
 		'bits': '0bf2fbde5ee4eb09080013f91b970eae679c26e25e9fe2c35571e6fb62b59b51',
 		'nanEqual': 'c17d8dbbbb4b1c76ccb8da017fd9c2b127d149e51690b8fe48e52c4f9b7b00bb'

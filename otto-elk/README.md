@@ -2,7 +2,7 @@
 
 > Captured results from earlier runs, not regenerated. This folder has no scripts. `otto-printer.js` is the probe program's source, an input like the driver.
 
-Two small engines that stdlib can't run on, for different reasons, and probes that show how far apart they are. [otto v0.5.1](https://github.com/robertkrimen/otto/tree/v0.5.1) targets ES5 and has no typed arrays; [Elk at `a9bb856`](https://github.com/cesanta/elk/tree/a9bb85619c5cddf49dfa8bdf529770fc9943a7fd) runs a subset with no `var`, `const`, arrays, or `new`. On an OrbStack aarch64 Linux VM on 22 November 2026, otto rejected `let`, Elk rejected `var`, and a program that declares no variable ran on both. Elk's rejection of `const` is from a Claude Code Cloud x86_64 VM on 2 November 2026, and otto's from macOS arm64 on 23 November 2026. A printer that prints `erf`'s results with `String( x )`, using no typed array itself, shows stdlib failing to load on otto, in its `Uint16Array` polyfill, before any maths runs.
+Two small engines that stdlib can't run on, for different reasons, and probes that show how far apart they are. [otto v0.5.1](https://github.com/robertkrimen/otto/tree/v0.5.1) targets ES5 and has no typed arrays; [Elk at `a9bb856`](https://github.com/cesanta/elk/tree/a9bb85619c5cddf49dfa8bdf529770fc9943a7fd) runs a subset with no `var`, `const`, arrays, or `new`. On an OrbStack aarch64 Linux VM on 22 November 2026, otto rejected `let`, Elk rejected `var`, and a program that declares no variable ran on both. Elk's rejection of `const` is from a Linux x86_64 VM on 2 November 2026, and otto's from macOS arm64 on 23 November 2026. A printer that prints `erf`'s results with `String( x )`, using no typed array itself, shows stdlib failing to load on otto, in its `Uint16Array` polyfill, before any maths runs.
 
 ## Tier
 
@@ -18,7 +18,7 @@ c: results only.
   - `const a = 1; console.log(a)`
   - `var a = 1; console.log(a)`, `let a = 1; console.log(a)`, and `console.log(1 + 2)`, as controls in the same run
 - **The printer,** [`otto-printer.js`](./otto-printer.js): requires `@stdlib/math-base-special-erf` 0.2.6 and prints `erf` of eight inputs as decimal strings. It was bundled with esbuild 0.25.10 (`--bundle --format=iife --target=es5`) on macOS arm64, run once on Node.js 24.22.3 as a control, then run twice on otto in the container.
-- **The 2 November smoke run,** on a Claude Code Cloud x86_64 VM: a typed-array probe on otto, and a list of one-line programs on Elk, of which this folder keeps an excerpt.
+- **The 2 November smoke run,** on a Linux x86_64 VM: a typed-array probe on otto, and a list of one-line programs on Elk, of which this folder keeps an excerpt.
 
 ## What the committed results show
 

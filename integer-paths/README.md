@@ -2,7 +2,7 @@
 
 > Captured results from an earlier run, not regenerated. This folder has no scripts.
 
-stdlib's 8- and 16-bit integer work, on every engine that could load it. Three routes by which integer typed arrays reach stdlib's array and strided code ran on 4,096 elements, with the extremes of each type, on a Claude Code Cloud x86_64 VM on 22 October 2026. Every binary that completed gave the same output, byte for byte, and an independent check, which recomputes each output from the printed inputs with unbounded integers and ECMA-262's conversion rules, found every value as the specification requires. What differed between engines was whether the code loaded, not what it computed.
+stdlib's 8- and 16-bit integer work, on every engine that could load it. Three routes by which integer typed arrays reach stdlib's array and strided code ran on 4,096 elements, with the extremes of each type, on a Linux x86_64 VM on 22 October 2026. Every binary that completed gave the same output, byte for byte, and an independent check, which recomputes each output from the printed inputs with unbounded integers and ECMA-262's conversion rules, found every value as the specification requires. What differed between engines was whether the code loaded, not what it computed.
 
 ## Tier
 
