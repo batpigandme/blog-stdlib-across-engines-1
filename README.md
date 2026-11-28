@@ -2,7 +2,7 @@
 
 > Source code for the blog post ["stdlib across engines"][post].
 
-The post asks whether a library's maths can give the same answers on every JavaScript engine, and looks at stdlib across engines and runtimes. This repository holds the results behind its claims, one folder per claim, and a page that runs the same test in your own browser. The results were measured on macOS arm64, on Linux x86_64 VMs, and on OrbStack's aarch64 Linux VM on a Mac.
+The post asks whether a library's maths can give the same answers on every JavaScript engine, and looks at stdlib across engines and runtimes. This repository holds the results behind its claims, one folder per claim, and a page that runs the same test in your own browser. The results were measured on macOS arm64, on Linux x86_64 VMs, and in Linux aarch64 containers on a Mac.
 
 Each folder's README says what was run, on what, and when, and what the committed files show, so a folder can be read without running anything. Every version a README names links to a pinned source where one exists.
 

@@ -1,6 +1,6 @@
 # Engines
 
-Every engine, runtime, and tool a result in this repository comes from: its version or commit, the host it ran on, how it got there, and the folder whose files show it. Hosts are macOS arm64 (Apple M1 Pro), Linux x86_64 VMs, and OrbStack's aarch64 Linux VM on that Mac. Each version is as the run printed or recorded it.
+Every engine, runtime, and tool a result in this repository comes from: its version or commit, the host it ran on, how it got there, and the folder whose files show it. Hosts are macOS arm64 (Apple M1 Pro), Linux x86_64 VMs, and Linux aarch64 containers on that Mac. Each version is as the run printed or recorded it.
 
 ## Engines
 
@@ -27,12 +27,12 @@ The macOS arm64 run of 21 October also ran most of the October engines, some at 
 | LibJS | `e1ba577a` | Linux x86_64, 2 Nov 2026 | the zoo, `20260303` | `digest/` |
 | Kiesel | 0.1.0-dev+20deb11f1 | Linux x86_64, 2 Nov 2026 | the zoo, `20260303` | `digest/` |
 | Rhino | 2.0.0-SNAPSHOT at `7386aa0`, on OpenJDK 25.0.4.1 | Linux x86_64, 2 Nov 2026 | the zoo, `20260303` | `digest/`, `rhino/` |
-| Rhino | [1.9.2](https://repo1.maven.org/maven2/org/mozilla/rhino-all/1.9.2/), on OpenJDK 25.0.2 | OrbStack aarch64, 22 Nov 2026 | Maven Central, checked against its sums | `rhino/`, `setup/` |
+| Rhino | [1.9.2](https://repo1.maven.org/maven2/org/mozilla/rhino-all/1.9.2/), on OpenJDK 25.0.2 | Linux aarch64, 22 Nov 2026 | Maven Central, checked against its sums | `rhino/`, `setup/` |
 | goja | `622d1007`, Go 1.26.10 | Linux x86_64, 2 Nov 2026 | `go install` | `digest/` |
-| otto | [v0.5.1](https://github.com/robertkrimen/otto/tree/v0.5.1), Go 1.24.7; Go 1.27.4 on macOS | Linux x86_64, 2 Nov 2026; OrbStack aarch64, 22 Nov 2026; macOS arm64, 23 and 24 Nov 2026 | `go install` | `otto-elk/`, `otto-polyfill-spike/`, `setup/` |
-| Elk | [`a9bb856`](https://github.com/cesanta/elk/tree/a9bb85619c5cddf49dfa8bdf529770fc9943a7fd) | Linux x86_64, 2 Nov 2026; OrbStack aarch64, 22 Nov 2026 | the zoo, `20260303`, checked against the zoo's hash | `otto-elk/`, `setup/` |
+| otto | [v0.5.1](https://github.com/robertkrimen/otto/tree/v0.5.1), Go 1.24.7; Go 1.27.4 on macOS | Linux x86_64, 2 Nov 2026; Linux aarch64, 22 Nov 2026; macOS arm64, 23 and 24 Nov 2026 | `go install` | `otto-elk/`, `otto-polyfill-spike/`, `setup/` |
+| Elk | [`a9bb856`](https://github.com/cesanta/elk/tree/a9bb85619c5cddf49dfa8bdf529770fc9943a7fd) | Linux x86_64, 2 Nov 2026; Linux aarch64, 22 Nov 2026 | the zoo, `20260303`, checked against the zoo's hash | `otto-elk/`, `setup/` |
 | Quanta | `767a49f` | Linux x86_64, 2 Nov 2026 | the zoo, `20260303` | `cant-run/` |
-| Porffor | 0.0.0-alpha.19 | Linux x86_64, 2 Nov 2026; OrbStack aarch64, 3 Nov 2026 | npm | `cant-run/` |
+| Porffor | 0.0.0-alpha.19 | Linux x86_64, 2 Nov 2026; Linux aarch64, 3 Nov 2026 | npm | `cant-run/` |
 | scriptc | 0.4.7; [0.4.16](https://www.npmjs.com/package/scriptc/v/0.4.16), with Apple clang 21.0.0 | Linux x86_64, 2 Nov 2026; macOS arm64, 23 Nov 2026 | npm | `scriptc/` |
 | lv5 | [`64c3a9c`](https://github.com/Constellation/iv/tree/64c3a9c7c517063f29d90d449180ea8f6f4d946f), GCC 13.3.0 | Linux x86_64, 23 and 24 Nov 2026; built twice, each bundle run twice on the second | built from source, with `-fcommon` | `lv5/` |
 
@@ -53,5 +53,5 @@ The macOS arm64 run of 21 October also ran most of the October engines, some at 
 | Tool | Version | Used for |
 | --- | --- | --- |
 | esbuild | [0.25.10](https://github.com/evanw/esbuild/releases/tag/v0.25.10) | building the bundles, the otto printer, and the two spikes' bundles |
-| pixi | [0.83.0](https://github.com/prefix-dev/pixi/releases/tag/v0.83.0) | the OrbStack container's Go and OpenJDK |
-| Docker image | `ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852` | every OrbStack run |
+| pixi | [0.83.0](https://github.com/prefix-dev/pixi/releases/tag/v0.83.0) | the Linux aarch64 container's Go and OpenJDK |
+| Docker image | `ubuntu:24.04@sha256:fe81560990fae86dc4743202b2cb4d3df98d0bcf949173cecef15ce1127ef852` | every Linux aarch64 run |
