@@ -2,7 +2,7 @@
 
 > Captured results from earlier runs, not regenerated. This folder has no scripts.
 
-Two engines that couldn't run stdlib's bundle, each for a reason of its own, measured on a Linux x86_64 VM on 2 November 2026. Quanta at `767a49f`: its parser hangs on stdlib's `new ctors[ 'uint16' ]( 1 )`, so the bundle never loads. Porffor 0.0.0-alpha.19, an ahead-of-time compiler: stdlib's `var UINT32_MAX` collides with the `<stdint.h>` macro in the C it generates, reproduced on an OrbStack aarch64 Linux VM on 3 November 2026. Neither is filed upstream. scriptc, which was here, is in [`../scriptc/`](../scriptc/), since the line it stops on is stdlib's own.
+Two engines that couldn't run stdlib's bundle, each for a reason of its own, measured on a Linux x86_64 VM on 2 November 2026. Quanta at `767a49f`: its parser hangs on stdlib's `new ctors[ 'uint16' ]( 1 )`, so the bundle never loads. Porffor 0.0.0-alpha.19, an ahead-of-time compiler: stdlib's `var UINT32_MAX` collides with the `<stdint.h>` macro in the C it generates, reproduced in a Linux aarch64 container on 3 November 2026. Neither is filed upstream. scriptc, which was here, is in [`../scriptc/`](../scriptc/), since the line it stops on is stdlib's own.
 
 ## Tier
 
@@ -15,7 +15,7 @@ On 2 November 2026, on a Linux x86_64 VM, each engine was given both bundles fro
 - **Quanta,** the JavaScript engines zoo's build at revision `767a49f`, release `20260303`. Rows `quanta`; outputs `npm-quanta.txt` and `source-quanta.txt`, each one line: `[unrun-stdlib-math: timed out after 120 s]`.
 - **Porffor 0.0.0-alpha.19,** from npm, compiling with `porf native`, which generates C and compiles it with GCC 13. Rows `porffor`, and `porffor-run` for its default mode; outputs `npm-porffor.txt` and `npm-porffor-run.txt`, which hold the compiler's errors.
 
-On 3 November 2026, Porffor 0.0.0-alpha.19 ran again in an Ubuntu 24.04 container on OrbStack on macOS arm64, on a two-line program and on `npm.js`, with the container's GCC 13.3.0. That excerpt is the one file here.
+On 3 November 2026, Porffor 0.0.0-alpha.19 ran again in a Linux aarch64 container, Ubuntu 24.04, on macOS arm64, on a two-line program and on `npm.js`, with the container's GCC 13.3.0. That excerpt is the one file here.
 
 ## What the committed results show
 
